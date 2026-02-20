@@ -1,0 +1,14 @@
+driver: energy
+
+molecule:
+  symbols: [O, H, H]
+  geometry: [0.0, 0.0,  0.117,
+             0.0, 0.757, -0.469,
+             0.0, -0.757, -0.469]
+  units: angstrom   # O-H bond: 0.9572 Å, H-O-H angle: 104.52°
+  charge: 0
+  multiplicity: 1
+
+model:
+  method: hf
+  basis: sto-3g
