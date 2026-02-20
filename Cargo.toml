@@ -6,6 +6,7 @@ edition = "2024"
 [dependencies]
 reqwest = { version = "0.12", default-features = false, features = ["blocking", "rustls-tls"] }
 serde_json = "1"
+serde_yaml = "0.9"
 
 [dev-dependencies]
 mockito = "1"
