@@ -10,6 +10,27 @@ program writes a one-line summary to standard output and exits with code 0. If a
 human-readable error message to standard error and exits with code 1. Nothing is written to
 standard output on failure.
 
+## Feature API
+
+### Functions
+
+- `run(args: &[String]) -> Result<String, String>`
+  - Accepts the command-line arguments with argv[0] (the binary name) already stripped.
+  - Returns `Err("usage: electron <input-file>".to_string())` if `args` does not contain
+    exactly one element.
+  - Otherwise resolves `args[0]` as a path (relative paths are resolved against the process
+    working directory) and delegates to `parse_input`.
+  - On success returns `Ok` containing the formatted summary line (without a trailing newline).
+  - On failure returns `Err` containing the `Display` representation of the `InputError`
+    (without the `"error: "` prefix).
+
+- `main()`
+  - Collects `std::env::args()`, strips argv[0], and passes the remainder to `run`.
+  - Prints the `Ok` string to standard output followed by a newline.
+  - Prints `"error: {msg}"` to standard error and exits with code 1 on `Err`.
+
+---
+
 ## Invocation
 
 ```
