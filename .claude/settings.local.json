@@ -6,7 +6,9 @@
       "Bash(cargo run:*)",
       "Skill(write-tests)",
       "Skill(plan-feature)",
-      "Bash(cargo test:*)"
+      "Bash(cargo test:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)"
     ]
   },
   "hooks": {
