@@ -1,5 +1,6 @@
 mod basis;
 mod input;
+mod orbital;
 
 use std::path::Path;
 use std::process;

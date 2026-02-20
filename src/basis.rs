@@ -153,14 +153,14 @@ fn fetch_basis_impl(
 // Types for parsed basis sets
 // ============================================================================
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 pub struct ElectronShell {
   pub angular_momentum: u32,
   pub exponents: Vec<f64>,
   pub coefficients: Vec<f64>,
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 pub struct BasisSet {
   pub element: String,
   pub atomic_number: u32,
