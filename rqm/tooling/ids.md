@@ -2,9 +2,9 @@
 
 This feature defines a scheme for assigning stable, opaque identifiers to requirements entities
 (files, sections, API items, and Gherkin scenarios) and provides a standalone bash script,
-`rqm.sh`, at the project root that stamps, indexes, and validates those identifiers across the
-codebase. The goal is to make it straightforward to locate every affected artefact when a
-requirement changes.
+`rqm.sh`, located at `.claude/skills/plan-feature/rqm.sh`, that stamps, indexes, and validates
+those identifiers across the codebase. The goal is to make it straightforward to locate every
+affected artefact when a requirement changes.
 
 ---
 
@@ -140,13 +140,14 @@ Fields per entry:
 
 ## Tool: rqm.sh
 
-A standalone bash script located at the project root. Requires `bash` (≥ 4.0), standard POSIX
-utilities (`grep`, `find`, `sed`, `awk`), and `jq` (for reading and writing the JSON registry).
+A standalone bash script located at `.claude/skills/plan-feature/rqm.sh`. Requires `bash` (≥ 4.0),
+standard POSIX utilities (`grep`, `find`, `sed`, `awk`), and `jq` (for reading and writing the
+JSON registry). A companion test suite lives at `.claude/skills/plan-feature/tests/test_rqm.sh`.
 
 ### Invocation
 
 ```
-./rqm.sh <subcommand> [args]
+.claude/skills/plan-feature/rqm.sh <subcommand> [args]
 ```
 
 Subcommands: `stamp`, `index`, `check`, `clean`.
@@ -183,7 +184,7 @@ Re-scans all `rqm/**/*.md` files and all `.rs` files under `src/` from scratch a
 If any `rq-XXXXXXXX` ID appears in more than one entity in the scanned markdown files, `index`
 reports each conflict, identifies which copy is likely the original (by comparing live declarations
 against the `decl` stored in the existing registry, if present), and suggests running
-`./rqm.sh stamp --fix-duplicates`. It exits non-zero and does not write the registry.
+`.claude/skills/plan-feature/rqm.sh stamp --fix-duplicates`. It exits non-zero and does not write the registry.
 
 The index operation is otherwise idempotent.
 
