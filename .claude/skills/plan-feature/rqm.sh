@@ -569,10 +569,61 @@ cmd_clean() {
   $changed || echo "clean: nothing to remove"
 }
 
+# ── cmd_show ──────────────────────────────────────────────────────────────────
+
+cmd_show() {
+  if [[ $# -ne 1 ]]; then
+    echo "usage: rqm.sh show <id>" >&2
+    exit 1
+  fi
+  local id="$1"
+  if ! [[ "$id" =~ ^rq-[0-9a-f]{8}$ ]]; then
+    echo "error: invalid ID format: ${id}" >&2
+    exit 1
+  fi
+  if [[ ! -f "$REGISTRY" ]]; then
+    echo "error: registry not found; run rqm.sh index first" >&2
+    exit 1
+  fi
+  local entry
+  if ! entry=$(jq -e --arg id "$id" '.[$id] // empty' "$REGISTRY" 2>/dev/null) \
+     || [[ -z "$entry" ]]; then
+    echo "error: ID not found: ${id}" >&2
+    exit 1
+  fi
+
+  local type file title decl ref_count
+  type=$(jq -r '.type' <<< "$entry")
+  file=$(jq -r '.file' <<< "$entry")
+  title=$(jq -r '.title' <<< "$entry")
+  decl=$(jq -r '.decl' <<< "$entry")
+  ref_count=$(jq '.refs | length' <<< "$entry")
+
+  printf 'id:    %s\n' "$id"
+  printf 'type:  %s\n' "$type"
+  printf 'file:  %s/%s.md\n' "$RQM_DIR" "$file"
+  printf 'title: %s\n' "$title"
+  printf 'decl:  %s\n' "$decl"
+
+  if [[ "$ref_count" -eq 0 ]]; then
+    printf 'refs:  (none)\n'
+  else
+    local first=true ref_file
+    while IFS= read -r ref_file; do
+      if $first; then
+        printf 'refs:  %s\n' "$ref_file"
+        first=false
+      else
+        printf '       %s\n' "$ref_file"
+      fi
+    done < <(jq -r '.refs[].file' <<< "$entry")
+  fi
+}
+
 # ── dispatch ──────────────────────────────────────────────────────────────────
 
 usage() {
-  echo "Usage: $0 <stamp|index|check|clean> [--fix-duplicates] [files...]" >&2
+  echo "Usage: $0 <stamp|index|check|clean|show> [--fix-duplicates] [files...]" >&2
   exit 1
 }
 
@@ -581,5 +632,6 @@ case "${1:-}" in
   index) shift; cmd_index ;;
   check) shift; cmd_check ;;
   clean) shift; cmd_clean ;;
+  show)  shift; cmd_show "$@" ;;
   *) usage ;;
 esac

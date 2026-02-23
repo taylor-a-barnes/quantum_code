@@ -8,7 +8,8 @@
       "Skill(plan-feature)",
       "Bash(cargo test:*)",
       "Bash(grep:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(.claude/skills/plan-feature/rqm.sh stamp:*)"
     ]
   },
   "hooks": {

@@ -1,4 +1,4 @@
-# Feature: Requirements Traceability ID System
+# Feature: Requirements Traceability ID System <!-- rq-7a3f8407 -->
 
 This feature defines a scheme for assigning stable, opaque identifiers to requirements entities
 (files, sections, API items, and Gherkin scenarios) and provides a standalone bash script,
@@ -8,9 +8,9 @@ affected artefact when a requirement changes.
 
 ---
 
-## ID Format and Assignment
+## ID Format and Assignment <!-- rq-cc3c804c -->
 
-### ID Format
+### ID Format <!-- rq-2125141d -->
 
 Each identifier has the form `rq-XXXXXXXX`, where `XXXXXXXX` is exactly 8 lowercase hexadecimal
 characters drawn uniformly at random. Examples: `rq-3a7f1c2e`, `rq-00deadbe`.
@@ -18,7 +18,7 @@ characters drawn uniformly at random. Examples: `rq-3a7f1c2e`, `rq-00deadbe`.
 IDs are opaque and assigned once. They are never re-derived from content or names; editing or
 renaming a requirement entity does not change its ID.
 
-### Entities That Receive IDs
+### Entities That Receive IDs <!-- rq-e4cc0dc8 -->
 
 IDs are assigned to four entity types:
 
@@ -32,7 +32,7 @@ IDs are assigned to four entity types:
 Headings at `####` depth and below, and sub-bullet API items (e.g. individual error variants), do
 not receive IDs.
 
-### Inline Embedding in Markdown
+### Inline Embedding in Markdown <!-- rq-bea5d92b -->
 
 IDs are stored directly in the markdown source using HTML comments (invisible when rendered) or
 Gherkin tags:
@@ -64,7 +64,7 @@ Gherkin tags:
   ```
   ````
 
-### References in Source Files
+### References in Source Files <!-- rq-f5d1441c -->
 
 An ID is "referenced" by a source file whenever any comment line contains the token
 `rq-XXXXXXXX` (matching the regex `rq-[0-9a-f]{8}`). Multiple references to the same ID in the
@@ -84,13 +84,13 @@ fn two_by_two_c_is_orthonormal() { ... }
 
 ---
 
-## Registry
+## Registry <!-- rq-9985669a -->
 
-### File Location
+### File Location <!-- rq-2cb1bfaa -->
 
 `rqm/registry.json` at the project root (adjacent to `rqm/`).
 
-### Schema
+### Schema <!-- rq-508bc4d3 -->
 
 The registry is a JSON object mapping each `rq-XXXXXXXX` string to a record:
 
@@ -138,21 +138,21 @@ Fields per entry:
 
 ---
 
-## Tool: rqm.sh
+## Tool: rqm.sh <!-- rq-fe31e175 -->
 
 A standalone bash script located at `.claude/skills/plan-feature/rqm.sh`. Requires `bash` (≥ 4.0),
 standard POSIX utilities (`grep`, `find`, `sed`, `awk`), and `jq` (for reading and writing the
 JSON registry). A companion test suite lives at `.claude/skills/plan-feature/tests/test_rqm.sh`.
 
-### Invocation
+### Invocation <!-- rq-920b8997 -->
 
 ```
 .claude/skills/plan-feature/rqm.sh <subcommand> [args]
 ```
 
-Subcommands: `stamp`, `index`, `check`, `clean`.
+Subcommands: `stamp`, `index`, `check`, `clean`, `show`.
 
-### `stamp [--fix-duplicates] [files...]`
+### `stamp [--fix-duplicates] [files...]` <!-- rq-31b3b3b3 -->
 
 Reads the specified markdown files (or all `rqm/**/*.md` if no files are given). For each entity
 that does not already have a valid `<!-- rq-XXXXXXXX -->` comment (or `@rq-XXXXXXXX` tag for
@@ -176,7 +176,7 @@ compares the live declaration of each copy against the stored `decl`:
 Prints a summary of every ID that was replaced and every unresolvable conflict. Exits non-zero if
 any unresolvable conflicts remain.
 
-### `index`
+### `index` <!-- rq-693b4877 -->
 
 Re-scans all `rqm/**/*.md` files and all `.rs` files under `src/` from scratch and writes a fresh
 `rqm/registry.json`, overwriting any previous file. Never modifies markdown source files.
@@ -188,7 +188,7 @@ against the `decl` stored in the existing registry, if present), and suggests ru
 
 The index operation is otherwise idempotent.
 
-### `check`
+### `check` <!-- rq-cf2d3fc5 -->
 
 Reads `rqm/registry.json` and re-scans source files for `rq-[0-9a-f]{8}` tokens. Reports:
 
@@ -197,7 +197,49 @@ Reads `rqm/registry.json` and re-scans source files for `rq-[0-9a-f]{8}` tokens.
 2. **Unreferenced requirements** (warning): an ID in the registry whose `refs` list is empty.
    Printed to stdout but does not affect the exit code.
 
-### `clean`
+### `show <id>` <!-- rq-5b99b478 -->
+
+Looks up a single requirement ID in `rqm/registry.json` and prints its metadata to standard output
+in a labelled plain-text format. Designed to be called programmatically from a Claude skill.
+
+**Arguments**: exactly one positional argument, the ID to look up (e.g. `rq-9b4d2f1a`). Providing
+zero arguments or more than one argument is an error.
+
+**Output format** (success): one label-colon-value pair per line, fixed-width labels, written to
+standard output:
+
+```
+id:    rq-9b4d2f1a
+type:  api-item
+file:  rqm/basis/guess.md
+title: guess_hcore
+decl:  - `guess_hcore(s: &Mat<f64>, ...) -> Result<Mat<f64>, GuessError>`
+refs:  src/guess.rs
+```
+
+- `id` — the full `rq-XXXXXXXX` string.
+- `type` — one of `file`, `section`, `api-item`, `scenario`.
+- `file` — the resolved path to the containing markdown file, i.e. `rqm/<file>.md` (where `file` is
+  the registry `file` field).
+- `title` — the human-readable title stored in the registry.
+- `decl` — the declaration line stored in the registry.
+- `refs` — one source file path per line, each additional path indented to align with the first. If
+  there are no refs the value is the literal string `(none)`.
+
+Exits with code 0 on success.
+
+**Error cases**: all error messages are written to standard error; nothing is written to standard
+output on error.
+
+| Condition | Message | Exit code |
+|-----------|---------|-----------|
+| No argument given | `usage: rqm.sh show <id>` | 1 |
+| More than one argument given | `usage: rqm.sh show <id>` | 1 |
+| Argument does not match `rq-[0-9a-f]{8}` | `error: invalid ID format: <arg>` | 1 |
+| Registry file does not exist | `error: registry not found; run rqm.sh index first` | 1 |
+| ID not found in registry | `error: ID not found: <id>` | 1 |
+
+### `clean` <!-- rq-eec23325 -->
 
 Reads `rqm/registry.json` and removes stale data:
 
@@ -210,24 +252,27 @@ Prints a summary of every removed entry or ref. Writes the cleaned registry in p
 
 ---
 
-## Gherkin Scenarios
+## Gherkin Scenarios <!-- rq-88c3e85a -->
 
 ```gherkin
 Feature: Requirements traceability ID system
 
   # --- stamp: headings ---
 
+  @rq-4784626e
   Scenario: stamp adds an ID to a heading that has none
     Given a markdown file containing the line "## Feature API" with no HTML comment
     When rqm.sh stamp is called on that file
     Then the line becomes "## Feature API <!-- rq-XXXXXXXX -->"
     And the appended ID matches rq-[0-9a-f]{8}
 
+  @rq-e61404cd
   Scenario: stamp does not change a heading that already has a valid ID
     Given a markdown file containing "## Feature API <!-- rq-3a7f1c2e -->"
     When rqm.sh stamp is called on that file
     Then the line is unchanged
 
+  @rq-79587818
   Scenario: stamp adds an ID to the file-level # heading
     Given a markdown file whose first heading line has no HTML comment
     When rqm.sh stamp is called
@@ -235,17 +280,20 @@ Feature: Requirements traceability ID system
 
   # --- stamp: API items ---
 
+  @rq-b8144a43
   Scenario: stamp adds an ID to a top-level API item bullet point
     Given a markdown file with a top-level bullet "- `guess_hcore(...)` → Result<...>" and no trailing comment
     And the bullet appears inside a "## Feature API" section
     When rqm.sh stamp is called
     Then the line becomes "- `guess_hcore(...)` → Result<...> <!-- rq-XXXXXXXX -->"
 
+  @rq-a9977964
   Scenario: stamp does not add IDs to sub-bullet API items
     Given an indented sub-bullet "  - `SingularOverlap` — ..." inside a Feature API section
     When rqm.sh stamp is called
     Then the sub-bullet line is unchanged
 
+  @rq-a54b5ccc
   Scenario: stamp does not add IDs to bullet points outside a Feature API section
     Given a top-level bullet point that appears in a section other than Feature API
     When rqm.sh stamp is called
@@ -253,12 +301,14 @@ Feature: Requirements traceability ID system
 
   # --- stamp: Gherkin scenarios ---
 
+  @rq-a8739836
   Scenario: stamp adds a Gherkin tag to an un-tagged scenario
     Given a gherkin code block containing "  Scenario: 2x2 system" with no preceding @rq- tag
     When rqm.sh stamp is called
     Then a line "@rq-XXXXXXXX" is inserted immediately before the "  Scenario:" line
     And the tag matches @rq-[0-9a-f]{8}
 
+  @rq-c6d4a0f1
   Scenario: stamp does not change a scenario that already has an rq- tag
     Given a gherkin scenario preceded by "@rq-7c1e5d3b" on the previous line
     When rqm.sh stamp is called
@@ -266,6 +316,7 @@ Feature: Requirements traceability ID system
 
   # --- stamp: ID uniqueness ---
 
+  @rq-34a3f81a
   Scenario: stamp retries on collision within the same file
     Given that the random ID generator produces "rq-aaaaaaaa" twice in succession
     And "rq-aaaaaaaa" is already present in the file being stamped
@@ -275,6 +326,7 @@ Feature: Requirements traceability ID system
 
   # --- index ---
 
+  @rq-8ff91416
   Scenario: index builds registry from stamped markdown
     Given rqm/basis/guess.md has IDs on all entities
     When rqm.sh index is called
@@ -283,27 +335,32 @@ Feature: Requirements traceability ID system
     And each entry includes a decl field matching the declaration line stripped of its ID annotation
     And the registry is valid JSON
 
+  @rq-df134f56
   Scenario: index records a source code reference
     Given rq-9b4d2f1a exists in rqm/basis/guess.md
     And src/guess.rs contains "// rq-9b4d2f1a"
     When rqm.sh index is called
     Then the registry entry for rq-9b4d2f1a contains a ref with file "src/guess.rs"
 
+  @rq-addc795c
   Scenario: index deduplicates multiple occurrences of the same ID in one file
     Given two separate lines in src/guess.rs both contain "rq-9b4d2f1a"
     When rqm.sh index is called
     Then the registry entry for rq-9b4d2f1a has exactly one ref entry for "src/guess.rs"
 
+  @rq-2f30c03a
   Scenario: index records cross-references between requirements files
     Given rqm/basis/initialization.md contains "rq-9b4d2f1a" in a comment
     When rqm.sh index is called
     Then the registry entry for rq-9b4d2f1a includes a ref with file "rqm/basis/initialization.md"
 
+  @rq-a2eef697
   Scenario: index is idempotent
     Given rqm.sh index has already been run and no files have changed
     When rqm.sh index is run again
     Then registry.json is byte-for-byte identical to its previous content
 
+  @rq-e3caa964
   Scenario: index aborts on duplicate and identifies the likely original via stored decl
     Given rq-3a7f1c2e is in the existing registry with decl "## Feature API"
     And rqm/basis/guess.md contains two headings annotated with rq-3a7f1c2e:
@@ -316,6 +373,7 @@ Feature: Requirements traceability ID system
     And the exit code is non-zero
     And registry.json is not written
 
+  @rq-a2ef1afa
   Scenario: index aborts on duplicate when neither declaration matches stored decl
     Given rq-3a7f1c2e is in the existing registry with decl "## Old Section"
     And rqm/basis/guess.md contains two headings annotated with rq-3a7f1c2e:
@@ -326,6 +384,7 @@ Feature: Requirements traceability ID system
     And the exit code is non-zero
     And registry.json is not written
 
+  @rq-fd73df4a
   Scenario: index aborts on duplicate when no prior registry exists
     Given no rqm/registry.json exists
     And rq-3a7f1c2e appears in two different entities in rqm/basis/guess.md
@@ -338,6 +397,7 @@ Feature: Requirements traceability ID system
 
   # --- stamp --fix-duplicates ---
 
+  @rq-db7495a1
   Scenario: stamp --fix-duplicates replaces the ID on the copy when original is identifiable
     Given rq-3a7f1c2e is in the registry with decl "## Feature API"
     And rqm/basis/guess.md contains two headings annotated rq-3a7f1c2e:
@@ -349,6 +409,7 @@ Feature: Requirements traceability ID system
     And the result is printed to stdout
     And the exit code is 0
 
+  @rq-45a62372
   Scenario: stamp --fix-duplicates reports and skips an unresolvable conflict
     Given rq-3a7f1c2e is in the registry with decl "## Old Section"
     And rqm/basis/guess.md contains two headings annotated rq-3a7f1c2e:
@@ -358,6 +419,7 @@ Feature: Requirements traceability ID system
     And the conflict is reported as unresolvable with both locations printed
     And the exit code is non-zero
 
+  @rq-96057c40
   Scenario: stamp --fix-duplicates reports and skips a duplicate with no prior registry
     Given no rqm/registry.json exists
     And rq-3a7f1c2e appears in two entities in rqm/basis/guess.md
@@ -368,6 +430,7 @@ Feature: Requirements traceability ID system
 
   # --- check ---
 
+  @rq-277179ac
   Scenario: check passes when all source references are in the registry
     Given the registry contains rq-9b4d2f1a
     And src/guess.rs references rq-9b4d2f1a
@@ -375,6 +438,7 @@ Feature: Requirements traceability ID system
     Then the output contains no errors
     And the exit code is 0
 
+  @rq-d8ed16ce
   Scenario: check reports a stale reference and exits non-zero
     Given src/guess.rs contains a reference to rq-deadbeef
     And rq-deadbeef is not in the registry
@@ -382,6 +446,7 @@ Feature: Requirements traceability ID system
     Then the output reports a stale reference in src/guess.rs
     And the exit code is non-zero
 
+  @rq-85b5573a
   Scenario: check reports unreferenced requirements as a warning without failing
     Given rq-3a7f1c2e is in the registry with an empty refs list
     When rqm.sh check is called
@@ -390,6 +455,7 @@ Feature: Requirements traceability ID system
 
   # --- clean ---
 
+  @rq-f6331ad1
   Scenario: clean removes a registry entry for a deleted markdown file
     Given the registry contains rq-a3f2b1c7 with file "basis/old"
     And rqm/basis/old.md does not exist
@@ -397,12 +463,14 @@ Feature: Requirements traceability ID system
     Then rq-a3f2b1c7 is removed from registry.json
     And the removal is printed to stdout
 
+  @rq-13e86848
   Scenario: clean removes an entry whose ID is no longer in its markdown file
     Given the registry records rq-9b4d2f1a as living in rqm/basis/guess.md
     And rq-9b4d2f1a no longer appears anywhere in rqm/basis/guess.md
     When rqm.sh clean is called
     Then rq-9b4d2f1a is removed from registry.json
 
+  @rq-a789b70c
   Scenario: clean removes a stale ref from a registry entry
     Given the registry entry for rq-9b4d2f1a includes a ref to src/guess.rs
     And src/guess.rs no longer contains rq-9b4d2f1a anywhere in the file
@@ -410,9 +478,89 @@ Feature: Requirements traceability ID system
     Then the ref to src/guess.rs is removed from the entry
     And the entry itself is retained
 
+  @rq-b7ac10cc
   Scenario: clean preserves a valid ref
     Given the registry entry for rq-9b4d2f1a includes a ref to src/guess.rs
     And src/guess.rs contains "rq-9b4d2f1a" somewhere in the file
     When rqm.sh clean is called
     Then the ref to src/guess.rs is retained in registry.json
+
+  # --- show ---
+
+  @rq-769e40df
+  Scenario: show prints all fields for a known api-item ID with one ref
+    Given the registry contains rq-9b4d2f1a with type "api-item", file "basis/guess",
+      title "guess_hcore", decl "- `guess_hcore(...)`", and one ref "src/guess.rs"
+    When rqm.sh show rq-9b4d2f1a is called
+    Then the exit code is 0
+    And standard output contains exactly:
+      """
+      id:    rq-9b4d2f1a
+      type:  api-item
+      file:  rqm/basis/guess.md
+      title: guess_hcore
+      decl:  - `guess_hcore(...)`
+      refs:  src/guess.rs
+      """
+    And standard error is empty
+
+  @rq-03ed9156
+  Scenario: show prints all fields for a known section ID with no refs
+    Given the registry contains rq-3a7f1c2e with type "section", file "basis/guess",
+      title "Feature API", decl "## Feature API", level 2, and an empty refs list
+    When rqm.sh show rq-3a7f1c2e is called
+    Then the exit code is 0
+    And standard output contains exactly:
+      """
+      id:    rq-3a7f1c2e
+      type:  section
+      file:  rqm/basis/guess.md
+      title: Feature API
+      decl:  ## Feature API
+      refs:  (none)
+      """
+
+  @rq-395a6fe3
+  Scenario: show prints multiple refs aligned under the first
+    Given the registry contains rq-9b4d2f1a with refs ["src/guess.rs", "src/scf.rs"]
+    When rqm.sh show rq-9b4d2f1a is called
+    Then the refs line reads "refs:  src/guess.rs"
+    And the next line reads "       src/scf.rs" (indented to align with the first ref value)
+
+  @rq-fcc16cf7
+  Scenario: show reports error and exits non-zero when ID is not in the registry
+    Given the registry does not contain rq-deadbeef
+    When rqm.sh show rq-deadbeef is called
+    Then the exit code is 1
+    And standard error contains "error: ID not found: rq-deadbeef"
+    And standard output is empty
+
+  @rq-5a797c45
+  Scenario: show reports error when registry file does not exist
+    Given rqm/registry.json does not exist
+    When rqm.sh show rq-9b4d2f1a is called
+    Then the exit code is 1
+    And standard error contains "error: registry not found; run rqm.sh index first"
+    And standard output is empty
+
+  @rq-27a5e1da
+  Scenario: show reports error when no argument is given
+    When rqm.sh show is called with no arguments
+    Then the exit code is 1
+    And standard error contains "usage: rqm.sh show <id>"
+    And standard output is empty
+
+  @rq-58022411
+  Scenario: show reports error when more than one argument is given
+    When rqm.sh show is called with arguments "rq-9b4d2f1a" and "rq-3a7f1c2e"
+    Then the exit code is 1
+    And standard error contains "usage: rqm.sh show <id>"
+    And standard output is empty
+
+  @rq-0d9b3986
+  Scenario: show reports error when argument does not match the rq-[0-9a-f]{8} format
+    When rqm.sh show is called with argument "REQ-001"
+    Then the exit code is 1
+    And standard error contains "error: invalid ID format: REQ-001"
+    And standard output is empty
 ```

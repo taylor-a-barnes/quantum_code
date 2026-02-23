@@ -1,4 +1,4 @@
-# Feature: Initialization of the AO Basis
+# Feature: Initialization of the AO Basis <!-- rq-69216d21 -->
 
 This feature builds the contracted Cartesian Gaussian-type orbital (CGTO) basis from a molecular
 geometry and a named basis set. It consumes a `CartesianGeometry` (from `rqm/input/parser.md`) and
@@ -9,7 +9,7 @@ other high-performance routines.
 Z-matrix geometry is not accepted; the caller is responsible for converting to Cartesian
 coordinates before calling this feature.
 
-## Background: Cartesian GTOs
+## Background: Cartesian GTOs <!-- rq-bc8eb6eb -->
 
 A contracted Cartesian GTO centered on atom A with nuclear position **R**_A is:
 
@@ -30,7 +30,7 @@ For a shell of angular momentum l there are n_cart(l) = (l+1)(l+2)/2 Cartesian c
 The ordering within a shell is: lx descending from l to 0; for each lx, ly descending from l−lx
 to 0; lz = l − lx − ly.
 
-## Basis function ordering
+## Basis function ordering <!-- rq-ea78b0ae -->
 
 Basis functions are stored in **atom-major, shell-minor** order:
 
@@ -43,11 +43,11 @@ same `BasisSet` is reused for every atom of that element.
 
 ---
 
-## Feature API
+## Feature API <!-- rq-1092efb0 -->
 
-### Functions
+### Functions <!-- rq-1e925908 -->
 
-- `init_basis(geometry: &CartesianGeometry, basis_name: &str) -> Result<AoBasis, InitError>`
+- `init_basis(geometry: &CartesianGeometry, basis_name: &str) -> Result<AoBasis, InitError>` <!-- rq-b033de97 -->
   - Collects the unique element symbols from `geometry.symbols`.
   - For each unique element calls `load_basis(element, basis_name)`, propagating any `LoadError`
     as `InitError::BasisLoad`.
@@ -56,9 +56,9 @@ same `BasisSet` is reused for every atom of that element.
   - Returns an `AoBasis` whose length fields (`n_basis`, `n_shells`) match the counts implied by
     the molecule and the loaded basis sets.
 
-### Types
+### Types <!-- rq-193d151f -->
 
-- `AoBasis` — structure of arrays; all "per basis function" vectors have length `n_basis`; all
+- `AoBasis` — structure of arrays; all "per basis function" vectors have length `n_basis`; all <!-- rq-b80fdfe9 -->
   "per shell" vectors have length `n_shells`; primitive vectors have total length equal to the sum
   of all `n_primitives` entries.
 
@@ -87,13 +87,13 @@ same `BasisSet` is reused for every atom of that element.
   - `exponents: Vec<f64>` — primitive Gaussian exponents α.
   - `coefficients: Vec<f64>` — contraction coefficients c.
 
-- `InitError` — error type returned by `init_basis`:
+- `InitError` — error type returned by `init_basis`: <!-- rq-ffe120e3 -->
   - `BasisLoad { element: String, source: LoadError }` — `load_basis` failed for the named
     element; `source` carries the underlying `LoadError`.
 
 ---
 
-## Gherkin Scenarios
+## Gherkin Scenarios <!-- rq-bd1c1c29 -->
 
 ```gherkin
 Feature: Initialise the AO basis
@@ -103,6 +103,7 @@ Feature: Initialise the AO basis
 
   # --- Edge cases ---
 
+  @rq-306b8b19
   Scenario: Empty molecule returns an empty AoBasis
     Given a CartesianGeometry with no atoms
     When init_basis is called
@@ -114,6 +115,7 @@ Feature: Initialise the AO basis
 
   # --- Basis function count ---
 
+  @rq-96b39fc1
   Scenario: Single hydrogen atom with one s-shell gives one basis function
     Given a CartesianGeometry with one H atom at (0, 0, 0) in Bohr
     And the basis for H contains one s-shell (l=0) with 3 primitives
@@ -122,6 +124,7 @@ Feature: Initialise the AO basis
     And n_basis is 1
     And n_shells is 1
 
+  @rq-67d600e4
   Scenario: Single carbon atom with one s-shell and one p-shell gives four basis functions
     Given a CartesianGeometry with one C atom
     And the basis for C contains one s-shell (l=0) and one p-shell (l=1)
@@ -129,12 +132,14 @@ Feature: Initialise the AO basis
     Then n_basis is 4
     And n_shells is 2
 
+  @rq-fff4a1c6
   Scenario: Single d-shell gives six basis functions
     Given a CartesianGeometry with one atom whose basis contains one d-shell (l=2)
     When init_basis is called
     Then n_basis is 6
     And n_shells is 1
 
+  @rq-9ae18fc3
   Scenario: Two-atom molecule sums basis function counts from both atoms
     Given a CartesianGeometry with atoms [O, H] where O has 2 s-shells and 1 p-shell,
       and H has 1 s-shell
@@ -144,6 +149,7 @@ Feature: Initialise the AO basis
 
   # --- Atom-major ordering ---
 
+  @rq-74f2aea7
   Scenario: Basis functions for atom 0 appear before those for atom 1
     Given a CartesianGeometry with two H atoms: H0 at (0, 0, 0) and H1 at (1, 0, 0) in Bohr
     And each H has one s-shell
@@ -151,6 +157,7 @@ Feature: Initialise the AO basis
     Then the basis function at index 0 has center_x = 0.0
     And the basis function at index 1 has center_x = 1.0
 
+  @rq-ecadce43
   Scenario: atom_index records the correct atom for each basis function
     Given a CartesianGeometry with atoms [O, H, H]
     And O has 2 s-shells and 1 p-shell, each H has 1 s-shell
@@ -165,6 +172,7 @@ Feature: Initialise the AO basis
 
   # --- Shell ordering within an atom ---
 
+  @rq-24205bf6
   Scenario: Shells for one atom appear in basis-file order
     Given a CartesianGeometry with one atom whose basis contains shells [s, p, s] in that order
     When init_basis is called
@@ -172,11 +180,13 @@ Feature: Initialise the AO basis
 
   # --- Cartesian component ordering ---
 
+  @rq-9d0ce49f
   Scenario: s-shell emits component (0, 0, 0)
     Given a CartesianGeometry with one atom whose basis has one s-shell
     When init_basis is called
     Then lx[0] = 0, ly[0] = 0, lz[0] = 0
 
+  @rq-1c570a75
   Scenario: p-shell emits components in order (1,0,0), (0,1,0), (0,0,1)
     Given a CartesianGeometry with one atom whose basis has one p-shell (l=1)
     When init_basis is called
@@ -184,6 +194,7 @@ Feature: Initialise the AO basis
     And (lx[1], ly[1], lz[1]) = (0, 1, 0)
     And (lx[2], ly[2], lz[2]) = (0, 0, 1)
 
+  @rq-d68aae9a
   Scenario: d-shell emits six components in the correct order
     Given a CartesianGeometry with one atom whose basis has one d-shell (l=2)
     When init_basis is called
@@ -192,6 +203,7 @@ Feature: Initialise the AO basis
 
   # --- Primitive storage ---
 
+  @rq-0469d88f
   Scenario: Exponents and coefficients are copied from the ElectronShell
     Given a CartesianGeometry with one H atom
     And the basis for H has one s-shell with exponents [3.425, 0.624, 0.169]
@@ -202,6 +214,7 @@ Feature: Initialise the AO basis
     And exponents[0..3] is [3.425, 0.624, 0.169]
     And coefficients[0..3] is [0.154, 0.535, 0.445]
 
+  @rq-796f75c7
   Scenario: prim_offset is correct when multiple shells are present
     Given a CartesianGeometry with one atom whose basis has:
       shell 0 with 3 primitives, shell 1 with 2 primitives
@@ -209,6 +222,7 @@ Feature: Initialise the AO basis
     Then prim_offset[0] is 0
     And prim_offset[1] is 3
 
+  @rq-dec90cfb
   Scenario: All Cartesian functions of a shell share the same shell_index
     Given a CartesianGeometry with one atom whose basis has one p-shell
     When init_basis is called
@@ -216,6 +230,7 @@ Feature: Initialise the AO basis
 
   # --- Atom coordinates ---
 
+  @rq-59853d61
   Scenario: center_x/y/z are taken from the CartesianGeometry coordinates
     Given a CartesianGeometry with one H atom at (1.5, 2.5, 3.5) in Bohr
     And the basis for H has one s-shell
@@ -224,6 +239,7 @@ Feature: Initialise the AO basis
     And center_y[0] = 2.5
     And center_z[0] = 3.5
 
+  @rq-dab024df
   Scenario: All basis functions for the same atom share that atom's coordinates
     Given a CartesianGeometry with one atom at (1.0, 0.0, 0.0) whose basis has one p-shell
     When init_basis is called
@@ -232,6 +248,7 @@ Feature: Initialise the AO basis
 
   # --- Repeated element types ---
 
+  @rq-da6f888e
   Scenario: load_basis is called once per unique element, not once per atom
     Given a CartesianGeometry with two H atoms
     And the basis for H is available
@@ -241,12 +258,14 @@ Feature: Initialise the AO basis
 
   # --- Error handling ---
 
+  @rq-036d5f90
   Scenario: InitError::BasisLoad is returned when load_basis fails for an element
     Given a CartesianGeometry with one atom of element "H"
     And load_basis("H", "unknown-basis") returns Err(LoadError::Fetch(BseError::UnknownBasisSet(_)))
     When init_basis is called with basis_name "unknown-basis"
     Then the result is Err(InitError::BasisLoad { element: "H", .. })
 
+  @rq-9e15f35e
   Scenario: The element name in BasisLoad error identifies the failing element
     Given a CartesianGeometry with atoms [H, C]
     And load_basis succeeds for "H" but fails for "C"

@@ -526,6 +526,133 @@ EOF
   assert_eq "$ref_count" "1"
 }
 
+# ── show ──────────────────────────────────────────────────────────────────────
+
+t_show_api_item_one_ref() {
+  cat > rqm/registry.json <<'EOF'
+{
+  "rq-9b4d2f1a": {
+    "type": "api-item",
+    "file": "basis/guess",
+    "title": "guess_hcore",
+    "decl": "- `guess_hcore(...)`",
+    "refs": [{"kind": "code", "file": "src/guess.rs"}]
+  }
+}
+EOF
+  local stdout rc=0
+  stdout=$(rqm show rq-9b4d2f1a 2>show_err.txt) || rc=$?
+  local stderr; stderr=$(cat show_err.txt)
+  assert_eq "$rc" "0"
+  assert_match 'id:    rq-9b4d2f1a' "$stdout"
+  assert_match 'type:  api-item' "$stdout"
+  assert_match 'file:  rqm/basis/guess\.md' "$stdout"
+  assert_match 'title: guess_hcore' "$stdout"
+  assert_match "decl:  - \`guess_hcore\(\.\.\.\)\`" "$stdout"
+  assert_match 'refs:  src/guess\.rs' "$stdout"
+  [[ -z "$stderr" ]] || { echo "  ASSERT: expected empty stderr, got: $stderr" >&2; exit 1; }
+}
+
+t_show_section_no_refs() {
+  cat > rqm/registry.json <<'EOF'
+{
+  "rq-3a7f1c2e": {
+    "type": "section",
+    "file": "basis/guess",
+    "title": "Feature API",
+    "level": 2,
+    "decl": "## Feature API",
+    "refs": []
+  }
+}
+EOF
+  local stdout rc=0
+  stdout=$(rqm show rq-3a7f1c2e 2>/dev/null) || rc=$?
+  assert_eq "$rc" "0"
+  assert_match 'id:    rq-3a7f1c2e' "$stdout"
+  assert_match 'type:  section' "$stdout"
+  assert_match 'file:  rqm/basis/guess\.md' "$stdout"
+  assert_match 'title: Feature API' "$stdout"
+  assert_match 'decl:  ## Feature API' "$stdout"
+  assert_match 'refs:  \(none\)' "$stdout"
+}
+
+t_show_multiple_refs_aligned() {
+  cat > rqm/registry.json <<'EOF'
+{
+  "rq-9b4d2f1a": {
+    "type": "api-item",
+    "file": "basis/guess",
+    "title": "guess_hcore",
+    "decl": "- `guess_hcore()`",
+    "refs": [
+      {"kind": "code", "file": "src/guess.rs"},
+      {"kind": "code", "file": "src/scf.rs"}
+    ]
+  }
+}
+EOF
+  local stdout rc=0
+  stdout=$(rqm show rq-9b4d2f1a 2>/dev/null) || rc=$?
+  assert_eq "$rc" "0"
+  assert_match 'refs:  src/guess\.rs' "$stdout"
+  assert_match '^       src/scf\.rs$' "$stdout"
+}
+
+t_show_id_not_in_registry() {
+  cat > rqm/registry.json <<'EOF'
+{"rq-aaaaaaaa": {"type":"file","file":"test","title":"T","decl":"# T","refs":[]}}
+EOF
+  local stderr rc=0
+  rqm show rq-deadbeef > /dev/null 2>show_err.txt || rc=$?
+  stderr=$(cat show_err.txt)
+  assert_exit_nonzero $rc
+  assert_match 'error: ID not found: rq-deadbeef' "$stderr"
+}
+
+t_show_registry_missing() {
+  # No registry.json created
+  local stderr rc=0
+  rqm show rq-9b4d2f1a > /dev/null 2>show_err.txt || rc=$?
+  stderr=$(cat show_err.txt)
+  assert_exit_nonzero $rc
+  assert_match 'error: registry not found' "$stderr"
+  assert_match 'rqm.sh index' "$stderr"
+}
+
+t_show_no_argument() {
+  cat > rqm/registry.json <<'EOF'
+{"rq-aaaaaaaa": {"type":"file","file":"test","title":"T","decl":"# T","refs":[]}}
+EOF
+  local stderr rc=0
+  rqm show > /dev/null 2>show_err.txt || rc=$?
+  stderr=$(cat show_err.txt)
+  assert_exit_nonzero $rc
+  assert_match 'usage: rqm.sh show <id>' "$stderr"
+}
+
+t_show_too_many_arguments() {
+  cat > rqm/registry.json <<'EOF'
+{"rq-aaaaaaaa": {"type":"file","file":"test","title":"T","decl":"# T","refs":[]}}
+EOF
+  local stderr rc=0
+  rqm show rq-9b4d2f1a rq-3a7f1c2e > /dev/null 2>show_err.txt || rc=$?
+  stderr=$(cat show_err.txt)
+  assert_exit_nonzero $rc
+  assert_match 'usage: rqm.sh show <id>' "$stderr"
+}
+
+t_show_invalid_id_format() {
+  cat > rqm/registry.json <<'EOF'
+{"rq-aaaaaaaa": {"type":"file","file":"test","title":"T","decl":"# T","refs":[]}}
+EOF
+  local stderr rc=0
+  rqm show REQ-001 > /dev/null 2>show_err.txt || rc=$?
+  stderr=$(cat show_err.txt)
+  assert_exit_nonzero $rc
+  assert_match 'error: invalid ID format: REQ-001' "$stderr"
+}
+
 # ── run all ───────────────────────────────────────────────────────────────────
 
 tests=(
@@ -556,6 +683,14 @@ tests=(
   t_clean_removes_entry_id_gone_from_md
   t_clean_removes_stale_ref
   t_clean_preserves_valid_ref
+  t_show_api_item_one_ref
+  t_show_section_no_refs
+  t_show_multiple_refs_aligned
+  t_show_id_not_in_registry
+  t_show_registry_missing
+  t_show_no_argument
+  t_show_too_many_arguments
+  t_show_invalid_id_format
 )
 
 echo "Running ${#tests[@]} tests..."

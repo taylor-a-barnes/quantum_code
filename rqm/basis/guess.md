@@ -1,11 +1,11 @@
-# Feature: Create Initial Atomic Orbital Guess
+# Feature: Create Initial Atomic Orbital Guess <!-- rq-51899c17 -->
 
 This feature implements a function that generates an initial guess for the molecular orbital (MO)
 coefficient matrix using the core Hamiltonian diagonalisation method. The returned matrix provides
 the starting point for a self-consistent field (SCF) optimisation. For details about the atomic
 orbital data structure, see `rqm/basis/initialization.md`.
 
-## Background: Core Hamiltonian Guess
+## Background: Core Hamiltonian Guess <!-- rq-34dff432 -->
 
 The core Hamiltonian H_core = T + V_ne (kinetic-energy + nuclear-electron attraction matrices) is
 diagonalised in the AO basis via the symmetric generalised eigenvalue problem:
@@ -29,11 +29,11 @@ ascending orbital energy. The linear-algebra backend is `faer`.
 
 ---
 
-## Feature API
+## Feature API <!-- rq-cfde4c6b -->
 
-### Functions
+### Functions <!-- rq-8016881b -->
 
-- `guess_hcore(s: &Mat<f64>, t: &Mat<f64>, v: &Mat<f64>, n_alpha: usize, n_beta: usize) -> Result<Mat<f64>, GuessError>`
+- `guess_hcore(s: &Mat<f64>, t: &Mat<f64>, v: &Mat<f64>, n_alpha: usize, n_beta: usize) -> Result<Mat<f64>, GuessError>` <!-- rq-860fdec1 -->
   - `s` — n_basis × n_basis symmetric AO overlap matrix.
   - `t` — n_basis × n_basis symmetric kinetic-energy matrix.
   - `v` — n_basis × n_basis symmetric nuclear-attraction matrix.
@@ -48,9 +48,9 @@ ascending orbital energy. The linear-algebra backend is `faer`.
   - Returns `SingularOverlap` if S is not positive definite (Cholesky fails).
   - `Mat<f64>` is `faer::Mat<f64>`.
 
-### Types
+### Types <!-- rq-6719600a -->
 
-- `GuessError` — error type returned by `guess_hcore`:
+- `GuessError` — error type returned by `guess_hcore`: <!-- rq-c9006697 -->
   - `DimensionMismatch { s_shape: (usize, usize), t_shape: (usize, usize), v_shape: (usize, usize) }`
     — the three input matrices do not all have the same n × n shape. Each field records the
     (nrows, ncols) of the corresponding matrix. Triggered by any non-square matrix or any size
@@ -61,14 +61,14 @@ ascending orbital energy. The linear-algebra backend is `faer`.
 
 ---
 
-## Dependencies
+## Dependencies <!-- rq-969abacb -->
 
 This feature adds `faer` as a production dependency. The crate provides `faer::Mat<f64>` and the
 symmetric eigendecomposition and Cholesky routines required by the algorithm.
 
 ---
 
-## Gherkin Scenarios
+## Gherkin Scenarios <!-- rq-3f66c513 -->
 
 ```gherkin
 Feature: Create initial HF/SCF guess from core Hamiltonian
@@ -80,6 +80,7 @@ Feature: Create initial HF/SCF guess from core Hamiltonian
 
   # --- Happy paths ---
 
+  @rq-dd6053fd
   Scenario: 2×2 system produces orthonormal MOs (S-metric)
     Given S = [[1.0, 0.5], [0.5, 1.0]]
     And T = [[0.760, 0.236], [0.236, 0.760]]
@@ -89,6 +90,7 @@ Feature: Create initial HF/SCF guess from core Hamiltonian
     Then the result is Ok(C) where C is a 2×2 matrix
     And C^T S C is approximately the 2×2 identity matrix
 
+  @rq-a7e8d70e
   Scenario: Columns of C are sorted by ascending orbital energy
     Given a 2×2 system where H_core has one eigenvalue near -1.5 and one near +0.2
     And n_alpha = 1, n_beta = 1
@@ -96,6 +98,7 @@ Feature: Create initial HF/SCF guess from core Hamiltonian
     Then the first column of C corresponds to the lower-energy MO (≈ -1.5)
     And the second column of C corresponds to the higher-energy MO (≈ +0.2)
 
+  @rq-e2399f35
   Scenario: S equal to identity gives C that diagonalises H_core
     Given S is the 3×3 identity matrix
     And H_core is a known symmetric 3×3 matrix with eigenvalues [-2.0, -0.5, 1.0] (ascending)
@@ -104,12 +107,14 @@ Feature: Create initial HF/SCF guess from core Hamiltonian
     Then the result is Ok(C)
     And C^T H_core C is approximately diagonal with entries [-2.0, -0.5, 1.0]
 
+  @rq-0c09328b
   Scenario: 1×1 system returns a 1×1 coefficient matrix
     Given S = [[1.0]], T = [[0.5]], V = [[-1.5]]
     And n_alpha = 1, n_beta = 0
     When guess_hcore is called
     Then the result is Ok(C) where C is [[1.0]] (up to sign)
 
+  @rq-ba21638d
   Scenario: Zero electrons is accepted and all MOs are virtual
     Given a 3×3 well-conditioned system
     And n_alpha = 0, n_beta = 0
@@ -117,12 +122,14 @@ Feature: Create initial HF/SCF guess from core Hamiltonian
     Then the result is Ok(C) and C is 3×3
     And C^T S C is approximately the 3×3 identity matrix
 
+  @rq-ca8bcc3c
   Scenario: n_alpha = n_beta = n_basis (fully occupied) is accepted
     Given a 3×3 well-conditioned system
     And n_alpha = 3, n_beta = 3
     When guess_hcore is called
     Then the result is Ok(C) and C is 3×3
 
+  @rq-dbe330f6
   Scenario: Unrestricted system (n_alpha ≠ n_beta) is accepted
     Given a 4×4 well-conditioned system
     And n_alpha = 3, n_beta = 2
@@ -132,24 +139,28 @@ Feature: Create initial HF/SCF guess from core Hamiltonian
 
   # --- Dimension mismatch errors ---
 
+  @rq-a8cd055d
   Scenario: T has a different size from S returns DimensionMismatch
     Given S is 3×3, T is 2×2, and V is 3×3
     When guess_hcore is called
     Then the result is Err(GuessError::DimensionMismatch {
         s_shape: (3, 3), t_shape: (2, 2), v_shape: (3, 3) })
 
+  @rq-3a4a39aa
   Scenario: V has a different size from S returns DimensionMismatch
     Given S is 3×3, T is 3×3, and V is 4×4
     When guess_hcore is called
     Then the result is Err(GuessError::DimensionMismatch {
         s_shape: (3, 3), t_shape: (3, 3), v_shape: (4, 4) })
 
+  @rq-543f82d3
   Scenario: Non-square S returns DimensionMismatch
     Given S has 3 rows and 2 columns, T is 3×3, and V is 3×3
     When guess_hcore is called
     Then the result is Err(GuessError::DimensionMismatch {
         s_shape: (3, 2), t_shape: (3, 3), v_shape: (3, 3) })
 
+  @rq-134f10eb
   Scenario: Non-square T returns DimensionMismatch
     Given S is 3×3, T has 3 rows and 2 columns, and V is 3×3
     When guess_hcore is called
@@ -158,12 +169,14 @@ Feature: Create initial HF/SCF guess from core Hamiltonian
 
   # --- Electron count errors ---
 
+  @rq-13bdb30e
   Scenario: n_alpha exceeds n_basis returns TooManyElectrons
     Given a 3×3 well-conditioned system
     And n_alpha = 4, n_beta = 1
     When guess_hcore is called
     Then the result is Err(GuessError::TooManyElectrons { n_alpha: 4, n_beta: 1, n_basis: 3 })
 
+  @rq-90775282
   Scenario: n_beta exceeds n_basis returns TooManyElectrons
     Given a 3×3 well-conditioned system
     And n_alpha = 1, n_beta = 4
@@ -171,6 +184,7 @@ Feature: Create initial HF/SCF guess from core Hamiltonian
     Then the result is Err(GuessError::TooManyElectrons { n_alpha: 1, n_beta: 4, n_basis: 3 })
 
   # Dimension checks are performed before electron-count checks.
+  @rq-62a4b8a1
   Scenario: Dimension mismatch takes priority over TooManyElectrons
     Given S is 3×3, T is 2×2, and V is 3×3
     And n_alpha = 5, n_beta = 5
@@ -179,6 +193,7 @@ Feature: Create initial HF/SCF guess from core Hamiltonian
 
   # --- Numerical errors ---
 
+  @rq-bb45f2f5
   Scenario: Singular overlap matrix (rank deficient) returns SingularOverlap
     Given S = [[1.0, 1.0], [1.0, 1.0]] (rank 1, not positive definite)
     And T and V are well-formed 2×2 matrices
@@ -186,6 +201,7 @@ Feature: Create initial HF/SCF guess from core Hamiltonian
     When guess_hcore is called
     Then the result is Err(GuessError::SingularOverlap)
 
+  @rq-1eed027e
   Scenario: Negative definite S (diagonal entries negative) returns SingularOverlap
     Given S = [[-1.0, 0.0], [0.0, -1.0]]
     And T and V are well-formed 2×2 matrices

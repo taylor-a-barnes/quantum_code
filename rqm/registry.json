@@ -1,0 +1,1962 @@
+{
+  "rq-00d0ee08": {
+    "decl": "- `Driver` (enum)",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Driver",
+    "type": "api-item"
+  },
+  "rq-036d5f90": {
+    "decl": "Scenario: InitError::BasisLoad is returned when load_basis fails for an element",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "InitError::BasisLoad is returned when load_basis fails for an element",
+    "type": "scenario"
+  },
+  "rq-03ed9156": {
+    "decl": "Scenario: show prints all fields for a known section ID with no refs",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "show prints all fields for a known section ID with no refs",
+    "type": "scenario"
+  },
+  "rq-0469d88f": {
+    "decl": "Scenario: Exponents and coefficients are copied from the ElectronShell",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "Exponents and coefficients are copied from the ElectronShell",
+    "type": "scenario"
+  },
+  "rq-06f86585": {
+    "decl": "Scenario: Units field absent defaults to Angstrom",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Units field absent defaults to Angstrom",
+    "type": "scenario"
+  },
+  "rq-07ff5f51": {
+    "decl": "Scenario: bond_length of zero returns InvalidZMatrix",
+    "file": "input/parser",
+    "refs": [],
+    "title": "bond_length of zero returns InvalidZMatrix",
+    "type": "scenario"
+  },
+  "rq-08af8a53": {
+    "decl": "Scenario: Unknown element symbol in Cartesian symbols returns InvalidElement",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Unknown element symbol in Cartesian symbols returns InvalidElement",
+    "type": "scenario"
+  },
+  "rq-08ba2d8b": {
+    "decl": "Scenario: Error report identifies the correct shell index",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "Error report identifies the correct shell index",
+    "type": "scenario"
+  },
+  "rq-0b06b690": {
+    "decl": "Scenario: Return cached file when a valid cache exists",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "Return cached file when a valid cache exists",
+    "type": "scenario"
+  },
+  "rq-0c09328b": {
+    "decl": "Scenario: 1×1 system returns a 1×1 coefficient matrix",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "1×1 system returns a 1×1 coefficient matrix",
+    "type": "scenario"
+  },
+  "rq-0d9b3986": {
+    "decl": "Scenario: show reports error when argument does not match the rq-[0-9a-f]{8} format",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "show reports error when argument does not match the rq-[0-9a-f]{8} format",
+    "type": "scenario"
+  },
+  "rq-101b9d3d": {
+    "decl": "- `SimulationInput`",
+    "file": "input/parser",
+    "refs": [],
+    "title": "SimulationInput",
+    "type": "api-item"
+  },
+  "rq-1092efb0": {
+    "decl": "## Feature API",
+    "file": "basis/initialization",
+    "level": 2,
+    "refs": [],
+    "title": "Feature API",
+    "type": "section"
+  },
+  "rq-115549cf": {
+    "decl": "Scenario: Create data/basis directory if it does not exist",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "Create data/basis directory if it does not exist",
+    "type": "scenario"
+  },
+  "rq-134f10eb": {
+    "decl": "Scenario: Non-square T returns DimensionMismatch",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "Non-square T returns DimensionMismatch",
+    "type": "scenario"
+  },
+  "rq-13bdb30e": {
+    "decl": "Scenario: n_alpha exceeds n_basis returns TooManyElectrons",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "n_alpha exceeds n_basis returns TooManyElectrons",
+    "type": "scenario"
+  },
+  "rq-13e86848": {
+    "decl": "Scenario: clean removes an entry whose ID is no longer in its markdown file",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "clean removes an entry whose ID is no longer in its markdown file",
+    "type": "scenario"
+  },
+  "rq-1509641c": {
+    "decl": "Scenario: ECP data is ignored when electron shells are present",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "ECP data is ignored when electron shells are present",
+    "type": "scenario"
+  },
+  "rq-150a9f68": {
+    "decl": "Scenario: Parse a file with multiple shells",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "Parse a file with multiple shells",
+    "type": "scenario"
+  },
+  "rq-17848ed0": {
+    "decl": "Scenario: Parse a Z-matrix with four atoms including dihedral",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Parse a Z-matrix with four atoms including dihedral",
+    "type": "scenario"
+  },
+  "rq-179c77ad": {
+    "decl": "Scenario: Unrecognised thermostat string returns InvalidValue",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Unrecognised thermostat string returns InvalidValue",
+    "type": "scenario"
+  },
+  "rq-193d151f": {
+    "decl": "### Types",
+    "file": "basis/initialization",
+    "level": 3,
+    "refs": [],
+    "title": "Types",
+    "type": "section"
+  },
+  "rq-1969d663": {
+    "decl": "Scenario: Row 1 missing bond_atom returns InvalidZMatrix for row 1",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Row 1 missing bond_atom returns InvalidZMatrix for row 1",
+    "type": "scenario"
+  },
+  "rq-1c40ba26": {
+    "decl": "Scenario: Unrecognised units string returns InvalidValue",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Unrecognised units string returns InvalidValue",
+    "type": "scenario"
+  },
+  "rq-1c570a75": {
+    "decl": "Scenario: p-shell emits components in order (1,0,0), (0,1,0), (0,0,1)",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "p-shell emits components in order (1,0,0), (0,1,0), (0,0,1)",
+    "type": "scenario"
+  },
+  "rq-1e925908": {
+    "decl": "### Functions",
+    "file": "basis/initialization",
+    "level": 3,
+    "refs": [],
+    "title": "Functions",
+    "type": "section"
+  },
+  "rq-1eed027e": {
+    "decl": "Scenario: Negative definite S (diagonal entries negative) returns SingularOverlap",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "Negative definite S (diagonal entries negative) returns SingularOverlap",
+    "type": "scenario"
+  },
+  "rq-1f01b9f3": {
+    "decl": "## Exit Codes",
+    "file": "input/cli",
+    "level": 2,
+    "refs": [],
+    "title": "Exit Codes",
+    "type": "section"
+  },
+  "rq-2001bb71": {
+    "decl": "Scenario: Input file is missing a required field",
+    "file": "input/cli",
+    "refs": [],
+    "title": "Input file is missing a required field",
+    "type": "scenario"
+  },
+  "rq-203014af": {
+    "decl": "# Feature: Parse an Input File",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Feature: Parse an Input File",
+    "type": "file"
+  },
+  "rq-211c6ac1": {
+    "decl": "Scenario: Driver \"gradient\" is accepted",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Driver \"gradient\" is accepted",
+    "type": "scenario"
+  },
+  "rq-2125141d": {
+    "decl": "### ID Format",
+    "file": "tooling/ids",
+    "level": 3,
+    "refs": [],
+    "title": "ID Format",
+    "type": "section"
+  },
+  "rq-24205bf6": {
+    "decl": "Scenario: Shells for one atom appear in basis-file order",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "Shells for one atom appear in basis-file order",
+    "type": "scenario"
+  },
+  "rq-2509fb27": {
+    "decl": "Scenario: Atom count for Z-matrix geometry is the number of rows",
+    "file": "input/cli",
+    "refs": [],
+    "title": "Atom count for Z-matrix geometry is the number of rows",
+    "type": "scenario"
+  },
+  "rq-25dd2d83": {
+    "decl": "### Functions",
+    "file": "input/parser",
+    "level": 3,
+    "refs": [],
+    "title": "Functions",
+    "type": "section"
+  },
+  "rq-277179ac": {
+    "decl": "Scenario: check passes when all source references are in the registry",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "check passes when all source references are in the registry",
+    "type": "scenario"
+  },
+  "rq-27a5e1da": {
+    "decl": "Scenario: show reports error when no argument is given",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "show reports error when no argument is given",
+    "type": "scenario"
+  },
+  "rq-2925f989": {
+    "decl": "Scenario: Element is not included in the requested basis set",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "Element is not included in the requested basis set",
+    "type": "scenario"
+  },
+  "rq-2aae5416": {
+    "decl": "Scenario: SP shell has wrong number of coefficient vectors",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "SP shell has wrong number of coefficient vectors",
+    "type": "scenario"
+  },
+  "rq-2cb1bfaa": {
+    "decl": "### File Location",
+    "file": "tooling/ids",
+    "level": 3,
+    "refs": [],
+    "title": "File Location",
+    "type": "section"
+  },
+  "rq-2f30c03a": {
+    "decl": "Scenario: index records cross-references between requirements files",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "index records cross-references between requirements files",
+    "type": "scenario"
+  },
+  "rq-306b8b19": {
+    "decl": "Scenario: Empty molecule returns an empty AoBasis",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "Empty molecule returns an empty AoBasis",
+    "type": "scenario"
+  },
+  "rq-31b3b3b3": {
+    "decl": "### `stamp [--fix-duplicates] [files...]`",
+    "file": "tooling/ids",
+    "level": 3,
+    "refs": [],
+    "title": "`stamp [--fix-duplicates] [files...]`",
+    "type": "section"
+  },
+  "rq-3246595c": {
+    "decl": "Scenario: Reference index 0 (out of 1-based range) returns InvalidZMatrix",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Reference index 0 (out of 1-based range) returns InvalidZMatrix",
+    "type": "scenario"
+  },
+  "rq-34317111": {
+    "decl": "- `parse_input_str(yaml: &str) -> Result<SimulationInput, InputError>`",
+    "file": "input/parser",
+    "refs": [],
+    "title": "parse_input_str",
+    "type": "api-item"
+  },
+  "rq-345232c6": {
+    "decl": "- `Molecule`",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Molecule",
+    "type": "api-item"
+  },
+  "rq-3473d09f": {
+    "decl": "Scenario: Missing model returns MissingField",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Missing model returns MissingField",
+    "type": "scenario"
+  },
+  "rq-34a3f81a": {
+    "decl": "Scenario: stamp retries on collision within the same file",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "stamp retries on collision within the same file",
+    "type": "scenario"
+  },
+  "rq-34dff432": {
+    "decl": "## Background: Core Hamiltonian Guess",
+    "file": "basis/guess",
+    "level": 2,
+    "refs": [],
+    "title": "Background: Core Hamiltonian Guess",
+    "type": "section"
+  },
+  "rq-35f7fca9": {
+    "decl": "Scenario: Negative temperature_k returns InvalidValue",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Negative temperature_k returns InvalidValue",
+    "type": "scenario"
+  },
+  "rq-36b8bb6e": {
+    "decl": "Scenario: Missing keywords block when driver is md returns MissingField",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Missing keywords block when driver is md returns MissingField",
+    "type": "scenario"
+  },
+  "rq-36dfa760": {
+    "decl": "Scenario: Input file contains invalid YAML",
+    "file": "input/cli",
+    "refs": [],
+    "title": "Input file contains invalid YAML",
+    "type": "scenario"
+  },
+  "rq-379667b1": {
+    "decl": "- `parse_input(path: &Path) -> Result<SimulationInput, InputError>`",
+    "file": "input/parser",
+    "refs": [],
+    "title": "parse_input",
+    "type": "api-item"
+  },
+  "rq-3866b4e9": {
+    "decl": "Scenario: Exponent string cannot be parsed as f64",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "Exponent string cannot be parsed as f64",
+    "type": "scenario"
+  },
+  "rq-3913185a": {
+    "decl": "## Cache Validation",
+    "file": "basis/bse",
+    "level": 2,
+    "refs": [],
+    "title": "Cache Validation",
+    "type": "section"
+  },
+  "rq-395a6fe3": {
+    "decl": "Scenario: show prints multiple refs aligned under the first",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "show prints multiple refs aligned under the first",
+    "type": "scenario"
+  },
+  "rq-39f344a4": {
+    "decl": "Scenario: parse_input returns IoError for a missing file",
+    "file": "input/parser",
+    "refs": [],
+    "title": "parse_input returns IoError for a missing file",
+    "type": "scenario"
+  },
+  "rq-3a4a39aa": {
+    "decl": "Scenario: V has a different size from S returns DimensionMismatch",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "V has a different size from S returns DimensionMismatch",
+    "type": "scenario"
+  },
+  "rq-3cb71f46": {
+    "decl": "# Feature: Pull Missing Basis Set from Basis Set Exchange",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "Feature: Pull Missing Basis Set from Basis Set Exchange",
+    "type": "file"
+  },
+  "rq-3df263f0": {
+    "decl": "Scenario: Geometry array too short returns CoordinateMismatch",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Geometry array too short returns CoordinateMismatch",
+    "type": "scenario"
+  },
+  "rq-3f2b44d5": {
+    "decl": "### Types",
+    "file": "input/parser",
+    "level": 3,
+    "refs": [],
+    "title": "Types",
+    "type": "section"
+  },
+  "rq-3f66c513": {
+    "decl": "## Gherkin Scenarios",
+    "file": "basis/guess",
+    "level": 2,
+    "refs": [],
+    "title": "Gherkin Scenarios",
+    "type": "section"
+  },
+  "rq-40282a3b": {
+    "decl": "- `Geometry` (enum)",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Geometry",
+    "type": "api-item"
+  },
+  "rq-45119d86": {
+    "decl": "Scenario: Coefficient string cannot be parsed as f64",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "Coefficient string cannot be parsed as f64",
+    "type": "scenario"
+  },
+  "rq-45a62372": {
+    "decl": "Scenario: stamp --fix-duplicates reports and skips an unresolvable conflict",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "stamp --fix-duplicates reports and skips an unresolvable conflict",
+    "type": "scenario"
+  },
+  "rq-4686ba54": {
+    "decl": "Scenario: Input file does not exist",
+    "file": "input/cli",
+    "refs": [],
+    "title": "Input file does not exist",
+    "type": "scenario"
+  },
+  "rq-47577318": {
+    "decl": "- `ParseError` — error type returned by `parse_basis`:",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "ParseError",
+    "type": "api-item"
+  },
+  "rq-4784626e": {
+    "decl": "Scenario: stamp adds an ID to a heading that has none",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "stamp adds an ID to a heading that has none",
+    "type": "scenario"
+  },
+  "rq-47e399ea": {
+    "decl": "Scenario: parse_input reads and parses a valid file",
+    "file": "input/parser",
+    "refs": [],
+    "title": "parse_input reads and parses a valid file",
+    "type": "scenario"
+  },
+  "rq-4a594aa0": {
+    "decl": "Scenario: Geometry array length not divisible by 3 per atom returns CoordinateMismatch",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Geometry array length not divisible by 3 per atom returns CoordinateMismatch",
+    "type": "scenario"
+  },
+  "rq-4affd59a": {
+    "decl": "Scenario: BSE API returns a response that is not valid JSON",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "BSE API returns a response that is not valid JSON",
+    "type": "scenario"
+  },
+  "rq-4d09f400": {
+    "decl": "Scenario: Empty model.method string returns InvalidValue",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Empty model.method string returns InvalidValue",
+    "type": "scenario"
+  },
+  "rq-4e6861cf": {
+    "decl": "Scenario: electron_shells key is absent",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "electron_shells key is absent",
+    "type": "scenario"
+  },
+  "rq-4fd55f64": {
+    "decl": "Scenario: Duplicate reference indices within a row returns InvalidZMatrix",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Duplicate reference indices within a row returns InvalidZMatrix",
+    "type": "scenario"
+  },
+  "rq-508bc4d3": {
+    "decl": "### Schema",
+    "file": "tooling/ids",
+    "level": 3,
+    "refs": [],
+    "title": "Schema",
+    "type": "section"
+  },
+  "rq-51537e9f": {
+    "decl": "Scenario: Coefficient vector length does not match exponent count",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "Coefficient vector length does not match exponent count",
+    "type": "scenario"
+  },
+  "rq-51899c17": {
+    "decl": "# Feature: Create Initial Atomic Orbital Guess",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "Feature: Create Initial Atomic Orbital Guess",
+    "type": "file"
+  },
+  "rq-524efd00": {
+    "decl": "Scenario: Atomic number key is not a number",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "Atomic number key is not a number",
+    "type": "scenario"
+  },
+  "rq-543f82d3": {
+    "decl": "Scenario: Non-square S returns DimensionMismatch",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "Non-square S returns DimensionMismatch",
+    "type": "scenario"
+  },
+  "rq-58022411": {
+    "decl": "Scenario: show reports error when more than one argument is given",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "show reports error when more than one argument is given",
+    "type": "scenario"
+  },
+  "rq-59853d61": {
+    "decl": "Scenario: center_x/y/z are taken from the CartesianGeometry coordinates",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "center_x/y/z are taken from the CartesianGeometry coordinates",
+    "type": "scenario"
+  },
+  "rq-599edb01": {
+    "decl": "Scenario: Row 2 with dihedral_atom present returns InvalidZMatrix for row 2",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Row 2 with dihedral_atom present returns InvalidZMatrix for row 2",
+    "type": "scenario"
+  },
+  "rq-5a797c45": {
+    "decl": "Scenario: show reports error when registry file does not exist",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "show reports error when registry file does not exist",
+    "type": "scenario"
+  },
+  "rq-5b34bd39": {
+    "decl": "Scenario: electron_shells array is empty",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "electron_shells array is empty",
+    "type": "scenario"
+  },
+  "rq-5b549c4a": {
+    "decl": "Scenario: BSE API is unreachable",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "BSE API is unreachable",
+    "type": "scenario"
+  },
+  "rq-5b73711a": {
+    "decl": "Scenario: Empty model.basis string returns InvalidValue",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Empty model.basis string returns InvalidValue",
+    "type": "scenario"
+  },
+  "rq-5b99b478": {
+    "decl": "### `show <id>`",
+    "file": "tooling/ids",
+    "level": 3,
+    "refs": [],
+    "title": "`show <id>`",
+    "type": "section"
+  },
+  "rq-5c07644f": {
+    "decl": "Scenario: Parse a valid single-shell file",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "Parse a valid single-shell file",
+    "type": "scenario"
+  },
+  "rq-5e15fe4f": {
+    "decl": "Scenario: Filesystem error when writing the downloaded file",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "Filesystem error when writing the downloaded file",
+    "type": "scenario"
+  },
+  "rq-5e83e69f": {
+    "decl": "- `ElectronShell` — a single contracted Gaussian shell:",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "ElectronShell",
+    "type": "api-item"
+  },
+  "rq-61bece13": {
+    "decl": "Scenario: SP shell is split into separate S and P shells",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "SP shell is split into separate S and P shells",
+    "type": "scenario"
+  },
+  "rq-62a4b8a1": {
+    "decl": "Scenario: Dimension mismatch takes priority over TooManyElectrons",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "Dimension mismatch takes priority over TooManyElectrons",
+    "type": "scenario"
+  },
+  "rq-6719600a": {
+    "decl": "### Types",
+    "file": "basis/guess",
+    "level": 3,
+    "refs": [],
+    "title": "Types",
+    "type": "section"
+  },
+  "rq-6767c54c": {
+    "decl": "### `model` Block",
+    "file": "input/parser",
+    "level": 3,
+    "refs": [],
+    "title": "`model` Block",
+    "type": "section"
+  },
+  "rq-679028f8": {
+    "decl": "Scenario: No argument given",
+    "file": "input/cli",
+    "refs": [],
+    "title": "No argument given",
+    "type": "scenario"
+  },
+  "rq-67d600e4": {
+    "decl": "Scenario: Single carbon atom with one s-shell and one p-shell gives four basis functions",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "Single carbon atom with one s-shell and one p-shell gives four basis functions",
+    "type": "scenario"
+  },
+  "rq-69216d21": {
+    "decl": "# Feature: Initialization of the AO Basis",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "Feature: Initialization of the AO Basis",
+    "type": "file"
+  },
+  "rq-693b4877": {
+    "decl": "### `index`",
+    "file": "tooling/ids",
+    "level": 3,
+    "refs": [],
+    "title": "`index`",
+    "type": "section"
+  },
+  "rq-69dc5ba5": {
+    "decl": "Scenario: Shell has empty angular_momentum array",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "Shell has empty angular_momentum array",
+    "type": "scenario"
+  },
+  "rq-6af18856": {
+    "decl": "- `MdKeywords`",
+    "file": "input/parser",
+    "refs": [],
+    "title": "MdKeywords",
+    "type": "api-item"
+  },
+  "rq-6b195950": {
+    "decl": "### `molecule` Block",
+    "file": "input/parser",
+    "level": 3,
+    "refs": [],
+    "title": "`molecule` Block",
+    "type": "section"
+  },
+  "rq-6b64811f": {
+    "decl": "Scenario: Row 0 with bond_atom present returns InvalidZMatrix for row 0",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Row 0 with bond_atom present returns InvalidZMatrix for row 0",
+    "type": "scenario"
+  },
+  "rq-6d1de1ee": {
+    "decl": "- `ZMatrixGeometry` — structure of arrays; all vectors have the same length (number of atoms)",
+    "file": "input/parser",
+    "refs": [],
+    "title": "ZMatrixGeometry",
+    "type": "api-item"
+  },
+  "rq-6df9b446": {
+    "decl": "### Functions",
+    "file": "basis/bse",
+    "level": 3,
+    "refs": [],
+    "title": "Functions",
+    "type": "section"
+  },
+  "rq-6ea890dc": {
+    "decl": "Scenario: Row 2 missing angle returns InvalidZMatrix for row 2",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Row 2 missing angle returns InvalidZMatrix for row 2",
+    "type": "scenario"
+  },
+  "rq-6f4eafd6": {
+    "decl": "### Functions",
+    "file": "input/cli",
+    "level": 3,
+    "refs": [],
+    "title": "Functions",
+    "type": "section"
+  },
+  "rq-7267a8fd": {
+    "decl": "## Gherkin Scenarios",
+    "file": "basis/bse",
+    "level": 2,
+    "refs": [],
+    "title": "Gherkin Scenarios",
+    "type": "section"
+  },
+  "rq-72795519": {
+    "decl": "- `main()`",
+    "file": "input/cli",
+    "refs": [],
+    "title": "main",
+    "type": "api-item"
+  },
+  "rq-7433bd9f": {
+    "decl": "Scenario: Filesystem error when creating the directory",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "Filesystem error when creating the directory",
+    "type": "scenario"
+  },
+  "rq-74f2aea7": {
+    "decl": "Scenario: Basis functions for atom 0 appear before those for atom 1",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "Basis functions for atom 0 appear before those for atom 1",
+    "type": "scenario"
+  },
+  "rq-75562248": {
+    "decl": "### Types",
+    "file": "basis/bse",
+    "level": 3,
+    "refs": [],
+    "title": "Types",
+    "type": "section"
+  },
+  "rq-75635399": {
+    "decl": "Scenario: Row 1 with angle_atom present returns InvalidZMatrix for row 1",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Row 1 with angle_atom present returns InvalidZMatrix for row 1",
+    "type": "scenario"
+  },
+  "rq-756fd335": {
+    "decl": "Scenario: Missing driver returns MissingField",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Missing driver returns MissingField",
+    "type": "scenario"
+  },
+  "rq-76843345": {
+    "decl": "Scenario: Empty z_matrix sequence returns MissingField",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Empty z_matrix sequence returns MissingField",
+    "type": "scenario"
+  },
+  "rq-769e40df": {
+    "decl": "Scenario: show prints all fields for a known api-item ID with one ref",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "show prints all fields for a known api-item ID with one ref",
+    "type": "scenario"
+  },
+  "rq-79587818": {
+    "decl": "Scenario: stamp adds an ID to the file-level # heading",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "stamp adds an ID to the file-level # heading",
+    "type": "scenario"
+  },
+  "rq-796f75c7": {
+    "decl": "Scenario: prim_offset is correct when multiple shells are present",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "prim_offset is correct when multiple shells are present",
+    "type": "scenario"
+  },
+  "rq-7a3f8407": {
+    "decl": "# Feature: Requirements Traceability ID System",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "Feature: Requirements Traceability ID System",
+    "type": "file"
+  },
+  "rq-7a4e6b91": {
+    "decl": "Scenario: Basis set name is not known to the BSE",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "Basis set name is not known to the BSE",
+    "type": "scenario"
+  },
+  "rq-7f3bcecd": {
+    "decl": "Scenario: Row 3 missing dihedral_atom returns InvalidZMatrix for row 3",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Row 3 missing dihedral_atom returns InvalidZMatrix for row 3",
+    "type": "scenario"
+  },
+  "rq-7f583b42": {
+    "decl": "Scenario: Element symbol is normalized to title case in the file path",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "Element symbol is normalized to title case in the file path",
+    "type": "scenario"
+  },
+  "rq-7fd5ee69": {
+    "decl": "Scenario: Z-matrix bond lengths are converted from Angstrom to Bohr",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Z-matrix bond lengths are converted from Angstrom to Bohr",
+    "type": "scenario"
+  },
+  "rq-7feafa0a": {
+    "decl": "## Feature API",
+    "file": "input/parser",
+    "level": 2,
+    "refs": [],
+    "title": "Feature API",
+    "type": "section"
+  },
+  "rq-8016881b": {
+    "decl": "### Functions",
+    "file": "basis/guess",
+    "level": 3,
+    "refs": [],
+    "title": "Functions",
+    "type": "section"
+  },
+  "rq-80e1dfda": {
+    "decl": "Scenario: dihedral outside [-180, 180] returns InvalidZMatrix",
+    "file": "input/parser",
+    "refs": [],
+    "title": "dihedral outside [-180, 180] returns InvalidZMatrix",
+    "type": "scenario"
+  },
+  "rq-810be7c3": {
+    "decl": "- `parse_basis(path: &Path) -> Result<BasisSet, ParseError>`",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "parse_basis",
+    "type": "api-item"
+  },
+  "rq-85b5573a": {
+    "decl": "Scenario: check reports unreferenced requirements as a warning without failing",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "check reports unreferenced requirements as a warning without failing",
+    "type": "scenario"
+  },
+  "rq-860fdec1": {
+    "decl": "- `guess_hcore(s: &Mat<f64>, t: &Mat<f64>, v: &Mat<f64>, n_alpha: usize, n_beta: usize) -> Result<Mat<f64>, GuessError>`",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "guess_hcore",
+    "type": "api-item"
+  },
+  "rq-86a704d2": {
+    "decl": "Scenario: Bohr coordinates are stored unchanged",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Bohr coordinates are stored unchanged",
+    "type": "scenario"
+  },
+  "rq-87455c7f": {
+    "decl": "### Example — Cartesian, MD",
+    "file": "input/parser",
+    "level": 3,
+    "refs": [],
+    "title": "Example — Cartesian, MD",
+    "type": "section"
+  },
+  "rq-88c3e85a": {
+    "decl": "## Gherkin Scenarios",
+    "file": "tooling/ids",
+    "level": 2,
+    "refs": [],
+    "title": "Gherkin Scenarios",
+    "type": "section"
+  },
+  "rq-8bc6b4f9": {
+    "decl": "Scenario: Parse a Z-matrix with one atom",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Parse a Z-matrix with one atom",
+    "type": "scenario"
+  },
+  "rq-8bdee305": {
+    "decl": "### `keywords` Block",
+    "file": "input/parser",
+    "level": 3,
+    "refs": [],
+    "title": "`keywords` Block",
+    "type": "section"
+  },
+  "rq-8c9e0b32": {
+    "decl": "Scenario: Relative path is resolved from the working directory",
+    "file": "input/cli",
+    "refs": [],
+    "title": "Relative path is resolved from the working directory",
+    "type": "scenario"
+  },
+  "rq-8e45c18b": {
+    "decl": "Scenario: Unknown element symbol in z_matrix returns InvalidElement",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Unknown element symbol in z_matrix returns InvalidElement",
+    "type": "scenario"
+  },
+  "rq-8ec1d10b": {
+    "decl": "Scenario: Parse a Z-matrix with three atoms",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Parse a Z-matrix with three atoms",
+    "type": "scenario"
+  },
+  "rq-8ff91416": {
+    "decl": "Scenario: index builds registry from stamped markdown",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "index builds registry from stamped markdown",
+    "type": "scenario"
+  },
+  "rq-90775282": {
+    "decl": "Scenario: n_beta exceeds n_basis returns TooManyElectrons",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "n_beta exceeds n_basis returns TooManyElectrons",
+    "type": "scenario"
+  },
+  "rq-9164f9b1": {
+    "decl": "## Gherkin Scenarios",
+    "file": "input/parser",
+    "level": 2,
+    "refs": [],
+    "title": "Gherkin Scenarios",
+    "type": "section"
+  },
+  "rq-916925f6": {
+    "decl": "Scenario: multiplicity of zero returns InvalidValue",
+    "file": "input/parser",
+    "refs": [],
+    "title": "multiplicity of zero returns InvalidValue",
+    "type": "scenario"
+  },
+  "rq-920b8997": {
+    "decl": "### Invocation",
+    "file": "tooling/ids",
+    "level": 3,
+    "refs": [],
+    "title": "Invocation",
+    "type": "section"
+  },
+  "rq-93f38b1d": {
+    "decl": "Scenario: BSE API returns an unexpected HTTP status code",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "BSE API returns an unexpected HTTP status code",
+    "type": "scenario"
+  },
+  "rq-94e1b8d6": {
+    "decl": "Scenario: Missing molecule returns MissingField",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Missing molecule returns MissingField",
+    "type": "scenario"
+  },
+  "rq-95b0715f": {
+    "decl": "- `InputError` — error type returned by both functions:",
+    "file": "input/parser",
+    "refs": [],
+    "title": "InputError",
+    "type": "api-item"
+  },
+  "rq-96057c40": {
+    "decl": "Scenario: stamp --fix-duplicates reports and skips a duplicate with no prior registry",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "stamp --fix-duplicates reports and skips a duplicate with no prior registry",
+    "type": "scenario"
+  },
+  "rq-969abacb": {
+    "decl": "## Dependencies",
+    "file": "basis/guess",
+    "level": 2,
+    "refs": [],
+    "title": "Dependencies",
+    "type": "section"
+  },
+  "rq-96b39fc1": {
+    "decl": "Scenario: Single hydrogen atom with one s-shell gives one basis function",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "Single hydrogen atom with one s-shell gives one basis function",
+    "type": "scenario"
+  },
+  "rq-987b9f09": {
+    "decl": "- `LoadError` — error type returned by `load_basis`:",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "LoadError",
+    "type": "api-item"
+  },
+  "rq-989109f7": {
+    "decl": "Scenario: Missing keywords.timestep_fs when driver is md returns MissingField",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Missing keywords.timestep_fs when driver is md returns MissingField",
+    "type": "scenario"
+  },
+  "rq-98b05632": {
+    "decl": "Scenario: Angstrom coordinates are converted to Bohr",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Angstrom coordinates are converted to Bohr",
+    "type": "scenario"
+  },
+  "rq-9985669a": {
+    "decl": "## Registry",
+    "file": "tooling/ids",
+    "level": 2,
+    "refs": [],
+    "title": "Registry",
+    "type": "section"
+  },
+  "rq-9ae18fc3": {
+    "decl": "Scenario: Two-atom molecule sums basis function counts from both atoms",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "Two-atom molecule sums basis function counts from both atoms",
+    "type": "scenario"
+  },
+  "rq-9d0ce49f": {
+    "decl": "Scenario: s-shell emits component (0, 0, 0)",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "s-shell emits component (0, 0, 0)",
+    "type": "scenario"
+  },
+  "rq-9e15f35e": {
+    "decl": "Scenario: The element name in BasisLoad error identifies the failing element",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "The element name in BasisLoad error identifies the failing element",
+    "type": "scenario"
+  },
+  "rq-9f03d983": {
+    "decl": "## QCSchema Shell Format",
+    "file": "basis/parser",
+    "level": 2,
+    "refs": [],
+    "title": "QCSchema Shell Format",
+    "type": "section"
+  },
+  "rq-9f2011c6": {
+    "decl": "Scenario: Re-download when cached file contains invalid JSON",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "Re-download when cached file contains invalid JSON",
+    "type": "scenario"
+  },
+  "rq-9fa5aa7a": {
+    "decl": "Scenario: Negative timestep_fs returns InvalidValue",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Negative timestep_fs returns InvalidValue",
+    "type": "scenario"
+  },
+  "rq-a07acae9": {
+    "decl": "Scenario: timestep_fs of zero returns InvalidValue",
+    "file": "input/parser",
+    "refs": [],
+    "title": "timestep_fs of zero returns InvalidValue",
+    "type": "scenario"
+  },
+  "rq-a07bed47": {
+    "decl": "Scenario: Invalid YAML returns InvalidYaml",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Invalid YAML returns InvalidYaml",
+    "type": "scenario"
+  },
+  "rq-a0a7c2fa": {
+    "decl": "- `run(args: &[String]) -> Result<String, String>`",
+    "file": "input/cli",
+    "refs": [],
+    "title": "run",
+    "type": "api-item"
+  },
+  "rq-a0fbf0d9": {
+    "decl": "Scenario: keywords block is ignored for non-MD drivers",
+    "file": "input/parser",
+    "refs": [],
+    "title": "keywords block is ignored for non-MD drivers",
+    "type": "scenario"
+  },
+  "rq-a1bc3664": {
+    "decl": "Scenario: Reject an empty element symbol",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "Reject an empty element symbol",
+    "type": "scenario"
+  },
+  "rq-a2e288de": {
+    "decl": "Scenario: n_steps of zero returns InvalidValue",
+    "file": "input/parser",
+    "refs": [],
+    "title": "n_steps of zero returns InvalidValue",
+    "type": "scenario"
+  },
+  "rq-a2eef697": {
+    "decl": "Scenario: index is idempotent",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "index is idempotent",
+    "type": "scenario"
+  },
+  "rq-a2ef1afa": {
+    "decl": "Scenario: index aborts on duplicate when neither declaration matches stored decl",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "index aborts on duplicate when neither declaration matches stored decl",
+    "type": "scenario"
+  },
+  "rq-a400431d": {
+    "decl": "Scenario: angle of 180 degrees returns InvalidZMatrix",
+    "file": "input/parser",
+    "refs": [],
+    "title": "angle of 180 degrees returns InvalidZMatrix",
+    "type": "scenario"
+  },
+  "rq-a54b5ccc": {
+    "decl": "Scenario: stamp does not add IDs to bullet points outside a Feature API section",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "stamp does not add IDs to bullet points outside a Feature API section",
+    "type": "scenario"
+  },
+  "rq-a59faf69": {
+    "decl": "- `BasisSet` — the parsed representation of a single-element basis set:",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "BasisSet",
+    "type": "api-item"
+  },
+  "rq-a5c42421": {
+    "decl": "Scenario: Parse a minimal Cartesian energy input",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Parse a minimal Cartesian energy input",
+    "type": "scenario"
+  },
+  "rq-a693bf67": {
+    "decl": "Scenario: Driver \"hessian\" is accepted",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Driver \"hessian\" is accepted",
+    "type": "scenario"
+  },
+  "rq-a73526e6": {
+    "decl": "Scenario: Re-download when cached file is empty",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "Re-download when cached file is empty",
+    "type": "scenario"
+  },
+  "rq-a789b70c": {
+    "decl": "Scenario: clean removes a stale ref from a registry entry",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "clean removes a stale ref from a registry entry",
+    "type": "scenario"
+  },
+  "rq-a7a57f4e": {
+    "decl": "Scenario: Input file contains an invalid value",
+    "file": "input/cli",
+    "refs": [],
+    "title": "Input file contains an invalid value",
+    "type": "scenario"
+  },
+  "rq-a7e8d70e": {
+    "decl": "Scenario: Columns of C are sorted by ascending orbital energy",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "Columns of C are sorted by ascending orbital energy",
+    "type": "scenario"
+  },
+  "rq-a8739836": {
+    "decl": "Scenario: stamp adds a Gherkin tag to an un-tagged scenario",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "stamp adds a Gherkin tag to an un-tagged scenario",
+    "type": "scenario"
+  },
+  "rq-a8cd055d": {
+    "decl": "Scenario: T has a different size from S returns DimensionMismatch",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "T has a different size from S returns DimensionMismatch",
+    "type": "scenario"
+  },
+  "rq-a95c7ed4": {
+    "decl": "### Functions",
+    "file": "basis/parser",
+    "level": 3,
+    "refs": [],
+    "title": "Functions",
+    "type": "section"
+  },
+  "rq-a9977964": {
+    "decl": "Scenario: stamp does not add IDs to sub-bullet API items",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "stamp does not add IDs to sub-bullet API items",
+    "type": "scenario"
+  },
+  "rq-abf35b0a": {
+    "decl": "Scenario: Parse a valid Cartesian energy input file",
+    "file": "input/cli",
+    "refs": [],
+    "title": "Parse a valid Cartesian energy input file",
+    "type": "scenario"
+  },
+  "rq-adc7637f": {
+    "decl": "Scenario: Negative bond_length returns InvalidZMatrix",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Negative bond_length returns InvalidZMatrix",
+    "type": "scenario"
+  },
+  "rq-addc795c": {
+    "decl": "Scenario: index deduplicates multiple occurrences of the same ID in one file",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "index deduplicates multiple occurrences of the same ID in one file",
+    "type": "scenario"
+  },
+  "rq-b033de97": {
+    "decl": "- `init_basis(geometry: &CartesianGeometry, basis_name: &str) -> Result<AoBasis, InitError>`",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "init_basis",
+    "type": "api-item"
+  },
+  "rq-b3b9e833": {
+    "decl": "## Gherkin Scenarios",
+    "file": "basis/parser",
+    "level": 2,
+    "refs": [],
+    "title": "Gherkin Scenarios",
+    "type": "section"
+  },
+  "rq-b4f10db7": {
+    "decl": "## Feature API",
+    "file": "basis/bse",
+    "level": 2,
+    "refs": [],
+    "title": "Feature API",
+    "type": "section"
+  },
+  "rq-b6b0de3d": {
+    "decl": "## Gherkin Scenarios",
+    "file": "input/cli",
+    "level": 2,
+    "refs": [],
+    "title": "Gherkin Scenarios",
+    "type": "section"
+  },
+  "rq-b7ac10cc": {
+    "decl": "Scenario: clean preserves a valid ref",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "clean preserves a valid ref",
+    "type": "scenario"
+  },
+  "rq-b80fdfe9": {
+    "decl": "- `AoBasis` — structure of arrays; all \"per basis function\" vectors have length `n_basis`; all",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "AoBasis",
+    "type": "api-item"
+  },
+  "rq-b8144a43": {
+    "decl": "Scenario: stamp adds an ID to a top-level API item bullet point",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "stamp adds an ID to a top-level API item bullet point",
+    "type": "scenario"
+  },
+  "rq-ba1a781f": {
+    "decl": "- `CartesianGeometry` — structure of arrays; `symbols`, `x`, `y`, `z` all have the same length",
+    "file": "input/parser",
+    "refs": [],
+    "title": "CartesianGeometry",
+    "type": "api-item"
+  },
+  "rq-ba21638d": {
+    "decl": "Scenario: Zero electrons is accepted and all MOs are virtual",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "Zero electrons is accepted and all MOs are virtual",
+    "type": "scenario"
+  },
+  "rq-bb3e6797": {
+    "decl": "## Feature API",
+    "file": "basis/parser",
+    "level": 2,
+    "refs": [],
+    "title": "Feature API",
+    "type": "section"
+  },
+  "rq-bb45f2f5": {
+    "decl": "Scenario: Singular overlap matrix (rank deficient) returns SingularOverlap",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "Singular overlap matrix (rank deficient) returns SingularOverlap",
+    "type": "scenario"
+  },
+  "rq-bb7411a6": {
+    "decl": "Scenario: Atomic number key is out of range",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "Atomic number key is out of range",
+    "type": "scenario"
+  },
+  "rq-bc8eb6eb": {
+    "decl": "## Background: Cartesian GTOs",
+    "file": "basis/initialization",
+    "level": 2,
+    "refs": [],
+    "title": "Background: Cartesian GTOs",
+    "type": "section"
+  },
+  "rq-bce67599": {
+    "decl": "# Feature: Command Line Interface",
+    "file": "input/cli",
+    "refs": [],
+    "title": "Feature: Command Line Interface",
+    "type": "file"
+  },
+  "rq-bd1c1c29": {
+    "decl": "## Gherkin Scenarios",
+    "file": "basis/initialization",
+    "level": 2,
+    "refs": [],
+    "title": "Gherkin Scenarios",
+    "type": "section"
+  },
+  "rq-bda1df68": {
+    "decl": "Scenario: Missing keywords.n_steps when driver is md returns MissingField",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Missing keywords.n_steps when driver is md returns MissingField",
+    "type": "scenario"
+  },
+  "rq-bea5d92b": {
+    "decl": "### Inline Embedding in Markdown",
+    "file": "tooling/ids",
+    "level": 3,
+    "refs": [],
+    "title": "Inline Embedding in Markdown",
+    "type": "section"
+  },
+  "rq-bf33f678": {
+    "decl": "Scenario: File is not valid JSON",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "File is not valid JSON",
+    "type": "scenario"
+  },
+  "rq-bf8fa293": {
+    "decl": "Scenario: Reject an unrecognised element symbol",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "Reject an unrecognised element symbol",
+    "type": "scenario"
+  },
+  "rq-c03e19e3": {
+    "decl": "Scenario: angle of zero degrees returns InvalidZMatrix",
+    "file": "input/parser",
+    "refs": [],
+    "title": "angle of zero degrees returns InvalidZMatrix",
+    "type": "scenario"
+  },
+  "rq-c56f7119": {
+    "decl": "## Standard Error (failure)",
+    "file": "input/cli",
+    "level": 2,
+    "refs": [],
+    "title": "Standard Error (failure)",
+    "type": "section"
+  },
+  "rq-c6aa52d9": {
+    "decl": "## BSE API Details",
+    "file": "basis/bse",
+    "level": 2,
+    "refs": [],
+    "title": "BSE API Details",
+    "type": "section"
+  },
+  "rq-c6d4a0f1": {
+    "decl": "Scenario: stamp does not change a scenario that already has an rq- tag",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "stamp does not change a scenario that already has an rq- tag",
+    "type": "scenario"
+  },
+  "rq-c9006697": {
+    "decl": "- `GuessError` — error type returned by `guess_hcore`:",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "GuessError",
+    "type": "api-item"
+  },
+  "rq-ca8bcc3c": {
+    "decl": "Scenario: n_alpha = n_beta = n_basis (fully occupied) is accepted",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "n_alpha = n_beta = n_basis (fully occupied) is accepted",
+    "type": "scenario"
+  },
+  "rq-cad74df2": {
+    "decl": "Scenario: Parse a Z-matrix with two atoms",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Parse a Z-matrix with two atoms",
+    "type": "scenario"
+  },
+  "rq-cbf624d5": {
+    "decl": "Scenario: load_basis propagates a parse error",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "load_basis propagates a parse error",
+    "type": "scenario"
+  },
+  "rq-cc3c804c": {
+    "decl": "## ID Format and Assignment",
+    "file": "tooling/ids",
+    "level": 2,
+    "refs": [],
+    "title": "ID Format and Assignment",
+    "type": "section"
+  },
+  "rq-ce3fe4c1": {
+    "decl": "Scenario: MD keywords temperature_k and thermostat default correctly when absent",
+    "file": "input/parser",
+    "refs": [],
+    "title": "MD keywords temperature_k and thermostat default correctly when absent",
+    "type": "scenario"
+  },
+  "rq-cf2d3fc5": {
+    "decl": "### `check`",
+    "file": "tooling/ids",
+    "level": 3,
+    "refs": [],
+    "title": "`check`",
+    "type": "section"
+  },
+  "rq-cfde4c6b": {
+    "decl": "## Feature API",
+    "file": "basis/guess",
+    "level": 2,
+    "refs": [],
+    "title": "Feature API",
+    "type": "section"
+  },
+  "rq-d0efc5b0": {
+    "decl": "Scenario: Unrecognised driver string returns InvalidValue",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Unrecognised driver string returns InvalidValue",
+    "type": "scenario"
+  },
+  "rq-d174c435": {
+    "decl": "Scenario: elements object contains two keys",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "elements object contains two keys",
+    "type": "scenario"
+  },
+  "rq-d2abc058": {
+    "decl": "- `fetch_basis(element: &str, basis_name: &str) -> Result<PathBuf, BseError>`",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "fetch_basis",
+    "type": "api-item"
+  },
+  "rq-d35d5c25": {
+    "decl": "Scenario: Missing molecule.geometry when only symbols is present",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Missing molecule.geometry when only symbols is present",
+    "type": "scenario"
+  },
+  "rq-d53adf01": {
+    "decl": "Scenario: Parse a valid MD input file",
+    "file": "input/cli",
+    "refs": [],
+    "title": "Parse a valid MD input file",
+    "type": "scenario"
+  },
+  "rq-d68aae9a": {
+    "decl": "Scenario: d-shell emits six components in the correct order",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "d-shell emits six components in the correct order",
+    "type": "scenario"
+  },
+  "rq-d6f2c78a": {
+    "decl": "## Invocation",
+    "file": "input/cli",
+    "level": 2,
+    "refs": [],
+    "title": "Invocation",
+    "type": "section"
+  },
+  "rq-d84f068c": {
+    "decl": "Scenario: Missing model.basis returns MissingField",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Missing model.basis returns MissingField",
+    "type": "scenario"
+  },
+  "rq-d8ed16ce": {
+    "decl": "Scenario: check reports a stale reference and exits non-zero",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "check reports a stale reference and exits non-zero",
+    "type": "scenario"
+  },
+  "rq-d9499ece": {
+    "decl": "## YAML Input File Format",
+    "file": "input/parser",
+    "level": 2,
+    "refs": [],
+    "title": "YAML Input File Format",
+    "type": "section"
+  },
+  "rq-da61179a": {
+    "decl": "Scenario: load_basis propagates a fetch error",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "load_basis propagates a fetch error",
+    "type": "scenario"
+  },
+  "rq-da6f888e": {
+    "decl": "Scenario: load_basis is called once per unique element, not once per atom",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "load_basis is called once per unique element, not once per atom",
+    "type": "scenario"
+  },
+  "rq-dab024df": {
+    "decl": "Scenario: All basis functions for the same atom share that atom's coordinates",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "All basis functions for the same atom share that atom's coordinates",
+    "type": "scenario"
+  },
+  "rq-dade0b1e": {
+    "decl": "- `BseError` — error type returned by `fetch_basis`. Must include at minimum:",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "BseError",
+    "type": "api-item"
+  },
+  "rq-db7495a1": {
+    "decl": "Scenario: stamp --fix-duplicates replaces the ID on the copy when original is identifiable",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "stamp --fix-duplicates replaces the ID on the copy when original is identifiable",
+    "type": "scenario"
+  },
+  "rq-db979c67": {
+    "decl": "Scenario: Missing molecule.symbols when only geometry is present",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Missing molecule.symbols when only geometry is present",
+    "type": "scenario"
+  },
+  "rq-dbdcd5b6": {
+    "decl": "### Example — Z-matrix, energy",
+    "file": "input/parser",
+    "level": 3,
+    "refs": [],
+    "title": "Example — Z-matrix, energy",
+    "type": "section"
+  },
+  "rq-dbe330f6": {
+    "decl": "Scenario: Unrestricted system (n_alpha ≠ n_beta) is accepted",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "Unrestricted system (n_alpha ≠ n_beta) is accepted",
+    "type": "scenario"
+  },
+  "rq-dc201910": {
+    "decl": "Scenario: Create basis-set subdirectory if it does not exist",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "Create basis-set subdirectory if it does not exist",
+    "type": "scenario"
+  },
+  "rq-dd6053fd": {
+    "decl": "Scenario: 2×2 system produces orthonormal MOs (S-metric)",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "2×2 system produces orthonormal MOs (S-metric)",
+    "type": "scenario"
+  },
+  "rq-dec90cfb": {
+    "decl": "Scenario: All Cartesian functions of a shell share the same shell_index",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "All Cartesian functions of a shell share the same shell_index",
+    "type": "scenario"
+  },
+  "rq-df134f56": {
+    "decl": "Scenario: index records a source code reference",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "index records a source code reference",
+    "type": "scenario"
+  },
+  "rq-df5117ef": {
+    "decl": "Scenario: Basis set name is normalized to lowercase in the file path",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "Basis set name is normalized to lowercase in the file path",
+    "type": "scenario"
+  },
+  "rq-df930b4f": {
+    "decl": "### Types",
+    "file": "basis/parser",
+    "level": 3,
+    "refs": [],
+    "title": "Types",
+    "type": "section"
+  },
+  "rq-e1160c83": {
+    "decl": "Scenario: Absolute path is accepted",
+    "file": "input/cli",
+    "refs": [],
+    "title": "Absolute path is accepted",
+    "type": "scenario"
+  },
+  "rq-e18403b7": {
+    "decl": "Scenario: File does not exist",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "File does not exist",
+    "type": "scenario"
+  },
+  "rq-e1c899d8": {
+    "decl": "## Standard Output (success)",
+    "file": "input/cli",
+    "level": 2,
+    "refs": [],
+    "title": "Standard Output (success)",
+    "type": "section"
+  },
+  "rq-e1ddad6c": {
+    "decl": "- `Thermostat` (enum)",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Thermostat",
+    "type": "api-item"
+  },
+  "rq-e21f8b10": {
+    "decl": "Scenario: Missing geometry when neither Cartesian nor z_matrix keys are present",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Missing geometry when neither Cartesian nor z_matrix keys are present",
+    "type": "scenario"
+  },
+  "rq-e2399f35": {
+    "decl": "Scenario: S equal to identity gives C that diagonalises H_core",
+    "file": "basis/guess",
+    "refs": [],
+    "title": "S equal to identity gives C that diagonalises H_core",
+    "type": "scenario"
+  },
+  "rq-e279cb2c": {
+    "decl": "- `load_basis(element: &str, basis_name: &str) -> Result<BasisSet, LoadError>`",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "load_basis",
+    "type": "api-item"
+  },
+  "rq-e2b4bb49": {
+    "decl": "Scenario: Parse a Cartesian MD input with all fields",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Parse a Cartesian MD input with all fields",
+    "type": "scenario"
+  },
+  "rq-e2c517c7": {
+    "decl": "Scenario: Unknown top-level key returns UnknownField",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Unknown top-level key returns UnknownField",
+    "type": "scenario"
+  },
+  "rq-e31d4d32": {
+    "decl": "- `Model`",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Model",
+    "type": "api-item"
+  },
+  "rq-e3caa964": {
+    "decl": "Scenario: index aborts on duplicate and identifies the likely original via stored decl",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "index aborts on duplicate and identifies the likely original via stored decl",
+    "type": "scenario"
+  },
+  "rq-e4ab56a5": {
+    "decl": "Scenario: Reject an empty basis set name",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "Reject an empty basis set name",
+    "type": "scenario"
+  },
+  "rq-e4cc0dc8": {
+    "decl": "### Entities That Receive IDs",
+    "file": "tooling/ids",
+    "level": 3,
+    "refs": [],
+    "title": "Entities That Receive IDs",
+    "type": "section"
+  },
+  "rq-e61404cd": {
+    "decl": "Scenario: stamp does not change a heading that already has a valid ID",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "stamp does not change a heading that already has a valid ID",
+    "type": "scenario"
+  },
+  "rq-e8de5a2c": {
+    "decl": "Scenario: Element symbols are normalised to title case",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Element symbols are normalised to title case",
+    "type": "scenario"
+  },
+  "rq-e9eadc08": {
+    "decl": "Scenario: InvalidZMatrix row index identifies the correct row",
+    "file": "input/parser",
+    "refs": [],
+    "title": "InvalidZMatrix row index identifies the correct row",
+    "type": "scenario"
+  },
+  "rq-ea78b0ae": {
+    "decl": "## Basis function ordering",
+    "file": "basis/initialization",
+    "level": 2,
+    "refs": [],
+    "title": "Basis function ordering",
+    "type": "section"
+  },
+  "rq-eb02af74": {
+    "decl": "Scenario: More than one argument given",
+    "file": "input/cli",
+    "refs": [],
+    "title": "More than one argument given",
+    "type": "scenario"
+  },
+  "rq-ecadce43": {
+    "decl": "Scenario: atom_index records the correct atom for each basis function",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "atom_index records the correct atom for each basis function",
+    "type": "scenario"
+  },
+  "rq-ed57fd1b": {
+    "decl": "Scenario: Forward reference returns InvalidZMatrix",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Forward reference returns InvalidZMatrix",
+    "type": "scenario"
+  },
+  "rq-ee630e3a": {
+    "decl": "Scenario: load_basis fetches and parses successfully",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "load_basis fetches and parses successfully",
+    "type": "scenario"
+  },
+  "rq-eec23325": {
+    "decl": "### `clean`",
+    "file": "tooling/ids",
+    "level": 3,
+    "refs": [],
+    "title": "`clean`",
+    "type": "section"
+  },
+  "rq-f141bbbf": {
+    "decl": "Scenario: elements object is empty",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "elements object is empty",
+    "type": "scenario"
+  },
+  "rq-f28bff90": {
+    "decl": "# Feature: Parse QCSchema Basis Set File",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "Feature: Parse QCSchema Basis Set File",
+    "type": "file"
+  },
+  "rq-f30173a0": {
+    "decl": "Scenario: Both Cartesian keys and z_matrix present returns AmbiguousGeometry",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Both Cartesian keys and z_matrix present returns AmbiguousGeometry",
+    "type": "scenario"
+  },
+  "rq-f3750503": {
+    "decl": "Scenario: Atomic number key is zero",
+    "file": "basis/parser",
+    "refs": [],
+    "title": "Atomic number key is zero",
+    "type": "scenario"
+  },
+  "rq-f5d1441c": {
+    "decl": "### References in Source Files",
+    "file": "tooling/ids",
+    "level": 3,
+    "refs": [],
+    "title": "References in Source Files",
+    "type": "section"
+  },
+  "rq-f6331ad1": {
+    "decl": "Scenario: clean removes a registry entry for a deleted markdown file",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "clean removes a registry entry for a deleted markdown file",
+    "type": "scenario"
+  },
+  "rq-fb41de1a": {
+    "decl": "Scenario: Missing model.method returns MissingField",
+    "file": "input/parser",
+    "refs": [],
+    "title": "Missing model.method returns MissingField",
+    "type": "scenario"
+  },
+  "rq-fbe1b430": {
+    "decl": "## Feature API",
+    "file": "input/cli",
+    "level": 2,
+    "refs": [],
+    "title": "Feature API",
+    "type": "section"
+  },
+  "rq-fcc16cf7": {
+    "decl": "Scenario: show reports error and exits non-zero when ID is not in the registry",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "show reports error and exits non-zero when ID is not in the registry",
+    "type": "scenario"
+  },
+  "rq-fd73df4a": {
+    "decl": "Scenario: index aborts on duplicate when no prior registry exists",
+    "file": "tooling/ids",
+    "refs": [],
+    "title": "index aborts on duplicate when no prior registry exists",
+    "type": "scenario"
+  },
+  "rq-fe31e175": {
+    "decl": "## Tool: rqm.sh",
+    "file": "tooling/ids",
+    "level": 2,
+    "refs": [],
+    "title": "Tool: rqm.sh",
+    "type": "section"
+  },
+  "rq-ff369161": {
+    "decl": "Scenario: Download a basis set that is not cached",
+    "file": "basis/bse",
+    "refs": [],
+    "title": "Download a basis set that is not cached",
+    "type": "scenario"
+  },
+  "rq-ffe120e3": {
+    "decl": "- `InitError` — error type returned by `init_basis`:",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "InitError",
+    "type": "api-item"
+  },
+  "rq-fff4a1c6": {
+    "decl": "Scenario: Single d-shell gives six basis functions",
+    "file": "basis/initialization",
+    "refs": [],
+    "title": "Single d-shell gives six basis functions",
+    "type": "scenario"
+  }
+}
